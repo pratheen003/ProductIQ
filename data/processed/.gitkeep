@@ -1,0 +1,4 @@
+# Processed motor records will be stored here as JSON files.
+# Each file corresponds to a single MotorProduct serialized from productiq.schema.
+# File naming convention: <product_id>.json (e.g. PIQ-W22SP-4P-1.1.json)
+# This directory is populated by Phase 1 extraction pipelines.

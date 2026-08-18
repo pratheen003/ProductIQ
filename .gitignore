@@ -1,0 +1,53 @@
+# ProductIQ .gitignore
+# =====================
+
+# Environment variables — NEVER commit real keys
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Processed outputs (generated data — do not commit)
+# JSON evidence files live in subdirectories; exclude all but keep .gitkeep
+data/processed/**/*.json
+data/processed/*.json
+
+# Jupyter
+.ipynb_checkpoints/

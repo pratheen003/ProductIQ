@@ -1,0 +1,254 @@
+[
+  {
+    "product_id": "PIQ-W22SP-4P-1.1",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 1.1 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-1.1.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-1.1",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-1.5",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 1.5 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-1.5.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-1.5",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-2.2",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 2.2 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-2.2.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-2.2",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-3.0",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 3 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-3.0.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-3.0",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-4.0",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 4 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-4.0.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-4.0",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-5.5",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 5.5 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-5.5.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-5.5",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-7.5",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 7.5 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-7.5.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-7.5",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-9.2",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 9.2 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-9.2.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-9.2",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-11",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 11 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-11.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-11",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-4P-15",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (4-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.5, IV pole row 15 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-4P-15.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-4P-15",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-6P-0.75",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (6-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.6, VI pole row 0.75 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-6P-0.75.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-6P-0.75",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  },
+  {
+    "product_id": "PIQ-W22SP-6P-1.1",
+    "manufacturer": "WEG",
+    "model": "W22 Severe Process IE3 (6-pole)",
+    "source_status": "real_source_collected",
+    "pdf": {
+      "file": "pdf/WEG_W22_Severe_Process_IE3_Brochure.pdf",
+      "source": "https://static.weg.net/medias/downloadcenter/hf9/hd0/WEG-w22-severe-process-european-market-50058022-brochure-english-web.pdf",
+      "location": "WEG W22 Severe Process brochure, p.6, VI pole row 1.1 kW"
+    },
+    "web": {
+      "file": "web/PIQ-W22SP-6P-1.1.url.txt",
+      "source": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+      "note": "Official WEG W22 catalog family reference; verify exact variant during Phase 1."
+    },
+    "csv": {
+      "file": "csv/legacy_motors.csv",
+      "row_key": "PIQ-W22SP-6P-1.1",
+      "note": "Legacy-style CSV representation derived from the cited WEG brochure row; not a manufacturer-issued legacy CSV."
+    }
+  }
+]

@@ -1,0 +1,13 @@
+product_id,manufacturer,model,rated_power_raw,rated_power_kw,rated_power_unit,full_load_current_a,current_unit,rated_speed_rpm,efficiency_percent,power_factor,weight_kg,frame,ip_note,source_location
+PIQ-W22SP-4P-1.1,WEG,W22 Severe Process IE3 (4-pole),1.1 kW,1.1,kW,7.22,A,1455,83.0,0.59,19.5,L90S,IP56+ sealing described; standard table does not list IP as a field,"WEG W22 Severe Process brochure, p.5, IV pole row 1.1 kW"
+PIQ-W22SP-4P-1.5,WEG,W22 Severe Process IE3 (4-pole),1.5 kW,1.5,kW,7.4,A,1450,84.0,0.58,23.0,90L,,"WEG W22 Severe Process brochure, p.5, IV pole row 1.5 kW"
+PIQ-W22SP-4P-2.2,WEG,W22 Severe Process IE3 (4-pole),2.2 kW,2.2,kW,7.4,A,1435,86.5,0.6,31.5,100L,,"WEG W22 Severe Process brochure, p.5, IV pole row 2.2 kW"
+PIQ-W22SP-4P-3.0,WEG,W22 Severe Process IE3 (4-pole),3 kW,3.0,kW,7.8,A,1440,87.0,0.6,37.5,L100L,,"WEG W22 Severe Process brochure, p.5, IV pole row 3 kW"
+PIQ-W22SP-4P-4.0,WEG,W22 Severe Process IE3 (4-pole),4 kW,4.0,kW,7.0,A,1450,88.7,0.6,44.0,112M,,"WEG W22 Severe Process brochure, p.5, IV pole row 4 kW"
+PIQ-W22SP-4P-5.5,WEG,W22 Severe Process IE3 (4-pole),5.5 kW,5.5,kW,8.5,A,1465,90.0,0.67,69.0,132S,,"WEG W22 Severe Process brochure, p.5, IV pole row 5.5 kW"
+PIQ-W22SP-4P-7.5,WEG,W22 Severe Process IE3 (4-pole),7.5 kW,7.5,kW,8.5,A,1465,91.0,0.68,78.0,132M,,"WEG W22 Severe Process brochure, p.5, IV pole row 7.5 kW"
+PIQ-W22SP-4P-9.2,WEG,W22 Severe Process IE3 (4-pole),9.2 kW,9.2,kW,7.2,A,1475,90.0,0.66,109.0,160M,,"WEG W22 Severe Process brochure, p.5, IV pole row 9.2 kW"
+PIQ-W22SP-4P-11,WEG,W22 Severe Process IE3 (4-pole),11 kW,11.0,kW,7.0,A,1470,91.0,0.65,123.0,160M,,"WEG W22 Severe Process brochure, p.5, IV pole row 11 kW"
+PIQ-W22SP-4P-15,WEG,W22 Severe Process IE3 (4-pole),15 kW,15.0,kW,7.3,A,1470,91.8,0.65,145.0,160L,,"WEG W22 Severe Process brochure, p.5, IV pole row 15 kW"
+PIQ-W22SP-6P-0.75,WEG,W22 Severe Process IE3 (6-pole),0.75 kW,0.75,kW,5.2,A,940,76.5,0.49,22.0,L90S,,"WEG W22 Severe Process brochure, p.6, VI pole row 0.75 kW"
+PIQ-W22SP-6P-1.1,WEG,W22 Severe Process IE3 (6-pole),1.1 kW,1.1,kW,4.9,A,945,80.5,0.51,28.5,100L,,"WEG W22 Severe Process brochure, p.6, VI pole row 1.1 kW"

@@ -2,7 +2,8 @@
 
 [![Phase 0: Foundation](https://img.shields.io/badge/Phase%200-Complete-brightgreen.svg)](#phase-status)
 [![Phase 1: Extraction](https://img.shields.io/badge/Phase%201-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-266%20passed-success.svg)](#running-tests)
+[![Phase 2: Normalization](https://img.shields.io/badge/Phase%202-Complete-brightgreen.svg)](#phase-status)
+[![Tests](https://img.shields.io/badge/Tests-518%20passed-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
@@ -72,12 +73,12 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 │   data/processed/extraction_summary.json                    │
 └─────────────────────────────────────────────────────────────┘
                               │
-               ═══════════════╪═══════════════════════════════
-                              │  [DOWNSTREAM PHASES: PLANNED]
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│             PHASE 2: NORMALIZATION (Planned)                │
-│   Unit conversions (HP→kW), canonical schema mapping        │
+│             PHASE 2: NORMALIZATION (COMPLETE ✅)            │
+│   Unit conversions (HP→kW, g→kg), canonical schema mapping  │
+│   Provenance-preserving, conflict-surfacing, no-LLM         │
+│   data/processed/<product_id>/normalized_product.json        │
 ├─────────────────────────────────────────────────────────────┤
 │             PHASE 3: VALIDATION (Planned)                   │
 │   Electromechanical physics checks (P = √3·V·I·PF·η)        │
@@ -101,8 +102,8 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 |---|---|:---:|---|
 | **Phase 0** | **Foundation & Schema** | **COMPLETE** ✅ | Frozen Pydantic v2 `MotorProduct` schema, 4-tier `DataStatus`, `CANONICAL_UNITS`, config & logging |
 | **Phase 1** | **Extraction Layer** | **COMPLETE** ✅ | Multi-source extractors (PDF, CSV, Web), 1,837 evidence records, automated batch pipeline |
-| **Phase 2** | **Normalization** | **NOT STARTED** ⏳ | Unit standardization & FieldValue mapping (Next Phase) |
-| **Phase 3** | **Validation** | **NOT STARTED** ⏳ | Physics plausibility checks & conflict detection |
+| **Phase 2** | **Normalization** | **COMPLETE** ✅ | Deterministic unit conversion (HP→kW, W→kW, g→kg), provenance preservation, conflict surfacing, 12/12 products normalized |
+| **Phase 3** | **Validation** | **NOT STARTED** ⏳ | Physics plausibility checks & conflict resolution |
 | **Phase 4** | **AI Enrichment** | **NOT STARTED** ⏳ | Grounded LLM enrichment of Unknown fields |
 | **Phase 5** | **Trust Scoring** | **NOT STARTED** ⏳ | Formula-visible explainable scoring engine |
 | **Phase 6** | **Product UI** | **NOT STARTED** ⏳ | Visual dashboard & conflict review queue |

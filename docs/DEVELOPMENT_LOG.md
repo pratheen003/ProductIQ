@@ -103,12 +103,54 @@ The raw CSV file was **intentionally left unedited** to preserve authentic legac
 
 ---
 
-## 7. Phase 2 Handoff: Next Steps
+## 7. Phase 2 — Normalization Layer
+
+**Status:** `COMPLETE`
+
+### Work Accomplished:
+- **Normalization Data Model (`productiq/normalization/models.py`):**
+  - Defined `NormalizedField`, `NormalizedProduct`, `EvidenceRef`, `ConflictRecord`, `NormalizationIssue`, `NormalizationOutcome`, and `NormalizationReport`.
+  - Preserved raw values, raw units, parsed values, and full provenance in `EvidenceRef`.
+  - Preserved conflicts verbatim without silently picking winners.
+- **Unit Converter (`productiq/normalization/unit_converter.py`):**
+  - Deterministic conversions for power (W, HP, mW → kW), mass (g, lb → kg), efficiency (fraction → %), power factor.
+  - Standardized aliases and strict rejection of unknown units.
+- **Value Parser (`productiq/normalization/value_parser.py`):**
+  - Conservative parsing of numeric, percentage, IP rating, frame size, and pole count strings.
+  - Malformed inputs produce explicit `NormalizationIssue` records rather than fabricated values.
+- **Attribute Mapper (`productiq/normalization/attribute_mapper.py`):**
+  - Deterministic mapping of Phase 1 evidence attribute names to Phase 0 canonical `MotorProduct` fields.
+  - Unmapped attributes classified as `UNMAPPED` and preserved in `unmapped_evidence`.
+- **Motor Normalizer & Batch Pipeline (`productiq/normalization/normalizer.py`, `scripts/run_normalization.py`):**
+  - Ingests Phase 1 evidence for all 12 products, standardizes canonical representations, detects conflicts, and saves `data/processed/<product_id>/normalized_product.json`.
+- **Phase 2 Verification & Tests (`scripts/verify_phase2.py`, `tests/test_phase2.py`, unit tests):**
+  - 13 automated audit checks in `verify_phase2.py`.
+  - 252 new tests covering units, values, mappings, provenance, and full pipeline.
+
+### Verified Final Normalization Metrics:
+- **Products Processed:** 12 / 12 (100% success)
+- **Evidence Consumed:** 385 records
+- **Fields Normalized:** 48
+- **Fields Conflicted:** 49 (preserved with full dual provenance)
+- **Fields Missing:** 35 (cleanly represented, zero guessed values)
+- **Unmapped Attributes:** 144 (torque, inertia, partial load data preserved)
+- **Parse Errors:** 0
+- **Unknown Units:** 0
+
+### Test & Regression Audit:
+- **`pytest tests/ -v`:** **518 passed, 3 skipped, 0 failed** in 35.77s.
+- **Phase 0 Verification:** 11/11 checks passed.
+- **Phase 1 Verification:** 11/11 checks passed.
+- **Phase 2 Verification:** 13/13 checks passed.
+
+---
+
+## 8. Phase 3 Handoff: Next Steps
 
 **Status:** `NOT STARTED`
 
-Phase 2 will implement the **Normalization Layer** (`productiq/normalization/`):
-1. Ingest raw `EvidenceRecord` objects from `data/processed/`.
-2. Convert non-canonical units (`HP` → `kW`, `lb` → `kg`, non-standard voltage strings) into canonical SI units.
-3. Map normalized values into `FieldValue` containers with full `SourceEntry` provenance.
-4. Output populated `MotorProduct` instances ready for Phase 3 engineering validation.
+Phase 3 will implement the **Validation Layer** (`productiq/validation/`):
+1. Ingest `NormalizedProduct` records and `ConflictRecord` items from Phase 2.
+2. Apply electromechanical physics checks ($P = \sqrt{3} \times V \times I \times \text{PF} \times \eta$, slip validation).
+3. Resolve discrepancies (e.g. identify that CSV `full_load_current_a = 7.22` is torque, confirming PDF `2.34 A` as rated current).
+4. Assign final canonical 4-tier `DataStatus` (`Verified`, `Inferred`, `Conflicted`, `Unknown`).

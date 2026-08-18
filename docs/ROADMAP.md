@@ -25,9 +25,9 @@ RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VAL
 ---
 
 ### Phase 2 — Unit Normalization & Mapping
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Convert heterogeneous extracted units (e.g. `HP` to `kW`, `lb` to `kg`, non-standard frequency strings) into SI canonical units defined in `CANONICAL_UNITS` while maintaining original raw values in `SourceEntry`.
-- **Expected Output:** `UnitNormalizer`, normalized `MotorProduct` instances populated with `FieldValue` structures.
+- **Status:** `COMPLETE` ✅
+- **Objective:** Convert heterogeneous extracted units (e.g. `HP` to `kW`, `lb` to `kg`, non-standard frequency strings) into SI canonical units defined in `CANONICAL_UNITS` while maintaining original raw values in `EvidenceRef`.
+- **Outputs:** `MotorNormalizer`, `BatchNormalizer`, `unit_converter.py`, `value_parser.py`, `attribute_mapper.py`, `models.py`, `scripts/run_normalization.py`, `scripts/verify_phase2.py`, `data/processed/<product_id>/normalized_product.json`.
 
 ---
 

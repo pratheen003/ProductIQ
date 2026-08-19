@@ -56,10 +56,16 @@ RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VAL
 
 ---
 
-### Phase 5 — Explainable Trust Scoring
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Compute transparent, formula-visible quality scores based on completeness, source diversity, physics validation pass rates, and conflict penalties.
-- **Expected Output:** `TrustScorer`, `TrustScore` dataclass with component breakdown and rendered mathematical formula.
+### Phase 5 — Trust-Aware Product Intelligence
+- **Status:** `COMPLETE` ✅
+- **Objective:** Apply deterministic trust analysis over normalized attributes, validation findings, and AI enrichment claims:
+  - Independent attribute-level trust derivation from Phase 2/3 outputs (never blindly copied from LLM confidence).
+  - Validation-aware claim trust classification (`SOURCE_BACKED`, `INFERRED`, `CONFLICTED`).
+  - Strict preservation of multi-source conflicts (e.g. PDF 2.34 A vs CSV 7.22 A gated with `REVIEW_REQUIRED`).
+  - Structured review queue generation with explicit WHAT, WHY, EVIDENCE, and RECOMMENDED ACTION.
+  - Transparent mathematical trust scoring with rendered formulas ($S = 0.35 C + 0.35 V + 0.30 D - P$).
+  - Commercial publishability categorization (`PUBLISHABLE`, `PUBLISHABLE_WITH_WARNING`, `REVIEW_REQUIRED`, `NOT_PUBLISHABLE`).
+- **Outputs:** `productiq/trust/models.py`, `productiq/trust/evaluator.py`, `productiq/trust/service.py`, `data/processed/<product_id>/trust_report.json`, `data/processed/batch_trust_report.json`, `scripts/run_trust.py`, `scripts/verify_phase5.py`.
 
 ---
 

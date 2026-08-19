@@ -5,7 +5,8 @@
 [![Phase 2: Normalization](https://img.shields.io/badge/Phase%202-Complete-brightgreen.svg)](#phase-status)
 [![Phase 3: Validation](https://img.shields.io/badge/Phase%203-Complete-brightgreen.svg)](#phase-status)
 [![Phase 4: Enrichment](https://img.shields.io/badge/Phase%204-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-Phase%204%20Verified-success.svg)](#running-tests)
+[![Phase 5: Trust Intelligence](https://img.shields.io/badge/Phase%205-Complete-brightgreen.svg)](#phase-status)
+[![Tests](https://img.shields.io/badge/Tests-Phase%205%20Verified-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
@@ -36,7 +37,7 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 - **Zero-Hallucination & Anti-Overwriting Principle:** The system preserves source evidence and does not silently invent or resolve conflicting values. Missing values remain `Unknown`; failed network requests record errors without inventing mock data.
 - **Physics-Grounded Validation (Complete ✅):** Deterministic electromechanical engineering formulas (mechanical torque-power-speed, synchronous speed/slip, IEC 60034-30-1 efficiency) validate parameters.
 - **Grounded AI Enrichment (Complete ✅):** Multi-provider LLM abstraction (Groq + OpenAI) generating commerce intelligence with strict claim separation and conflict preservation.
-- **Explainable Trust Scoring (Planned):** Trust scores display their exact formula rather than an opaque score.
+- **Trust-Aware Product Intelligence (Complete ✅):** Independent attribute trust, claim validation, structured review queue, and deterministic mathematical scoring ($S = 0.35 C + 0.35 V + 0.30 D - P$).
 
 ---
 
@@ -96,8 +97,12 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 │   120+ structured claims with provenance tracking           │
 │   data/processed/<product_id>/enrichment.json               │
 ├─────────────────────────────────────────────────────────────┤
-│             PHASE 5: EXPLAINABLE TRUST SCORING (Planned)    │
-│   Formula-visible data confidence scoring                   │
+│             PHASE 5: TRUST INTELLIGENCE (COMPLETE ✅)       │
+│   Independent attribute & claim trust classification        │
+│   Publishability gating (PUBLISHABLE / REVIEW_REQUIRED)     │
+│   Structured review queue with action items (62 items)      │
+│   Deterministic scoring: S = 0.35C + 0.35V + 0.30D - P      │
+│   data/processed/<product_id>/trust_report.json             │
 ├─────────────────────────────────────────────────────────────┤
 │             PHASE 6: PRODUCT INTELLIGENCE UI (Planned)      │
 │   Human-inspectable dashboard & review queue                │
@@ -115,7 +120,7 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 | **Phase 2** | **Normalization** | **COMPLETE** ✅ | Deterministic unit conversion (HP→kW, W→kW, g→kg), provenance preservation, conflict surfacing, 12/12 products normalized |
 | **Phase 3** | **Validation** | **COMPLETE** ✅ | Deterministic rules engine, 409 findings, 61 conflicts surfaced (never resolved), torque-power-RPM engineering check, known 2.34A vs 7.22A conflict explicitly detected |
 | **Phase 4** | **AI Enrichment** | **COMPLETE** ✅ | Grounded LLM enrichment via Groq / OpenAI, structured commercial summaries, applications, keywords, conflict preservation |
-| **Phase 5** | **Trust Scoring** | **NOT STARTED** ⏳ | Formula-visible explainable scoring engine |
+| **Phase 5** | **Trust Intelligence** | **COMPLETE** ✅ | Independent attribute trust, claim validation, review queue, publishability gating, deterministic scoring ($S = 0.35C + 0.35V + 0.30D - P$) |
 | **Phase 6** | **Product UI** | **NOT STARTED** ⏳ | Visual dashboard & conflict review queue |
 
 ---
@@ -178,6 +183,9 @@ python scripts/run_validation.py
 
 # Run Phase 4 Batch AI Enrichment (Groq Provider)
 python scripts/run_enrichment.py
+
+# Run Phase 5 Batch Trust Intelligence Evaluation
+python scripts/run_trust.py
 ```
 
 ### 5. Run Verification Audits
@@ -196,6 +204,9 @@ python -X utf8 scripts/verify_phase3.py
 
 # Verify Phase 4 AI Enrichment Layer
 python -X utf8 scripts/verify_phase4.py
+
+# Verify Phase 5 Trust-Aware Intelligence Layer
+python -X utf8 scripts/verify_phase5.py
 ```
 
 ---
@@ -208,7 +219,7 @@ python -m pytest tests/ -v
 ```
 
 **Current Test Results:**
-- All tests passing across 11 test suites (unit, schema, extraction, normalization, validation, enrichment, multi-provider abstraction, failure handling, and regression tests).
+- All tests passing across 12 test suites (unit, schema, extraction, normalization, validation, enrichment, trust intelligence, multi-provider abstraction, failure handling, and regression tests).
 
 ---
 
@@ -220,7 +231,7 @@ ProductIq/
 │   ├── csv/legacy_motors.csv            # 12-row legacy catalog dataset
 │   ├── pdf/WEG_W22_Severe_Process_...   # 2.5 MB manufacturer PDF
 │   ├── web/*.url.txt                    # 12 catalog web URL references
-│   ├── processed/                       # Evidence, normalized, validation, and enrichment JSON files
+│   ├── processed/                       # Evidence, normalized, validation, enrichment, and trust JSON files
 │   ├── dataset_manifest.json            # Product identity and source registry
 │   └── README.md                        # Dataset provenance & copyright notice
 ├── docs/
@@ -231,11 +242,13 @@ ProductIq/
 │   ├── NORMALIZATION.md                 # Normalization layer technical specification
 │   ├── VALIDATION.md                    # Validation layer technical specification
 │   ├── ENRICHMENT.md                    # AI Enrichment technical specification
+│   ├── TRUST.md                         # Trust Intelligence technical specification
 │   ├── PHASE_0.md                       # Phase 0 foundation reference
 │   ├── PHASE_1.md                       # Phase 1 extraction reference
 │   ├── PHASE_2.md                       # Phase 2 normalization reference
 │   ├── PHASE_3.md                       # Phase 3 validation reference
 │   ├── PHASE_4.md                       # Phase 4 AI enrichment reference
+│   ├── PHASE_5.md                       # Phase 5 trust intelligence reference
 │   ├── ROADMAP.md                       # Project roadmap (Phase 0–8)
 │   └── SCHEMA.md                        # Frozen canonical schema documentation
 ├── productiq/
@@ -268,7 +281,12 @@ ProductIq/
 │   │   ├── prompts.py
 │   │   ├── base.py
 │   │   └── service.py
-│   ├── trust/                           # Phase 5 stub (Not Started)
+│   ├── trust/                           # Phase 5: Trust-aware intelligence & publishability engine
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── models.py
+│   │   ├── evaluator.py
+│   │   └── service.py
 │   ├── dashboard/                       # Phase 6+ stub (Not Started)
 │   ├── llm/                             # Multi-provider LLM API client wrapper (Groq + OpenAI)
 │   ├── config.py                        # Typed configuration loader
@@ -277,11 +295,14 @@ ProductIq/
 │   ├── run_extraction.py                # Batch extraction CLI runner
 │   ├── run_normalization.py             # Batch normalization CLI runner
 │   ├── run_validation.py                # Batch validation CLI runner
+│   ├── run_trust.py                     # Batch trust evaluation CLI runner
 │   ├── verify_phase0.py                 # Phase 0 audit script (11 checks)
 │   ├── verify_phase1.py                 # Phase 1 audit script (11 checks)
 │   ├── verify_phase2.py                 # Phase 2 audit script (13 checks)
-│   └── verify_phase3.py                 # Phase 3 audit script (16 checks)
-├── tests/                               # 634 unit & integration tests
+│   ├── verify_phase3.py                 # Phase 3 audit script (16 checks)
+│   ├── verify_phase4.py                 # Phase 4 audit script (18 checks)
+│   └── verify_phase5.py                 # Phase 5 audit script (20 checks)
+├── tests/                               # Unit & integration tests
 │   ├── test_schema.py
 │   ├── test_phase0.py
 │   ├── test_llm.py
@@ -291,7 +312,9 @@ ProductIq/
 │   ├── test_extraction_web.py
 │   ├── test_phase1.py
 │   ├── test_phase2.py
-│   └── test_phase3.py
+│   ├── test_phase3.py
+│   ├── test_phase4.py
+│   └── test_phase5.py
 ├── .env.example                         # Environment template (no secrets)
 ├── .gitignore                           # Git ignore rules
 ├── README.md                            # Main project overview
@@ -304,11 +327,11 @@ ProductIq/
 ## 11. Known Limitations
 
 1. **WEG.net Anti-Bot Blocking:** Live HTTP requests to `weg.net` catalog URLs are blocked with HTTP 403 Forbidden. ProductIQ captures this failure state verbatim without hallucinating data.
-2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally surfaced as a conflict by Phase 2/3 without picking an arbitrary winner.
+2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally surfaced as a conflict by Phase 2/3, preserved with warnings by Phase 4, and placed in the Phase 5 human Review Queue with `REVIEW_REQUIRED` publishability status without picking an arbitrary winner.
 
 ---
 
 ## 12. Roadmap & Next Steps
 
 See [`docs/ROADMAP.md`](docs/ROADMAP.md) for full phase-by-phase objectives.  
-**Immediate Next Step:** **Phase 4 — Grounded LLM Enrichment** (`productiq/enrichment/`) [NOT STARTED].
+**Immediate Next Step:** **Phase 6 — Product Intelligence UI / Dashboard** (`productiq/dashboard/`) [NOT STARTED].

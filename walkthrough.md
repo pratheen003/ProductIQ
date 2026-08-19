@@ -40,9 +40,16 @@ Raw manufacturer documents → structured, normalized, explainable motor product
 │  12 x enrichment.json  |  Multi-provider LLM                │
 │  120+ structured claims |  Anti-hallucination verified      │
 └─────────────────────────┬───────────────────────────────────┘
-                          | Phase 5 (future)
+                          | Phase 5 Trust Intelligence
                           v
-                 TRUST SCORING + DASHBOARD
+┌─────────────────────────────────────────────────────────────┐
+│              TRUST INTELLIGENCE LAYER (COMPLETE)             │
+│  12 x trust_report.json |  Review Queue (62 items)          │
+│  Deterministic scoring  |  Commerce Publishability Gating   │
+└─────────────────────────┬───────────────────────────────────┘
+                          | Phase 6 (future)
+                          v
+                 DASHBOARD & REVIEW UI
 ```
 
 ---
@@ -301,7 +308,7 @@ NormalizedProduct + ProductValidationReport
 ProductEnrichment (12 x enrichment.json)
 ```
 
-### Key outcomes
+### Phase 4 Outcomes
 
 | Metric | Value |
 |---|---|
@@ -313,17 +320,76 @@ ProductEnrichment (12 x enrichment.json)
 | Inferred claims | Explicitly tagged with confidence and reasoning notes |
 | Conflicts silently resolved | **0** (100% preserved) |
 
-### Anti-Hallucination & Conflict Preservation
+---
 
-For `PIQ-W22SP-4P-1.1`, the rated current discrepancy (PDF 2.34 A vs CSV 7.22 A) is surfaced in `unresolved_conflicts` with explicit warning, and the LLM never picks a winner as an unquestioned factual claim. Inferred frequency (`50 Hz`) and pole count (`4`) written to `MotorProduct` are strictly assigned `DataStatus.INFERRED` with full `SourceEntry` provenance.
+## Phase 5 — Trust-Aware Product Intelligence (Complete)
 
-### What's Next (Phase 5 — Explainable Trust Scoring)
+Phase 5 introduces deterministic, explainable trust evaluation, review queue generation, and commercial publishability gating:
 
-Phase 5 will receive:
-1. **12 x `enrichment.json`** — commercial intelligence with claim breakdown
-2. **12 x `validation_report.json`** — deterministic validation findings
-3. **12 x `normalized_product.json`** — canonical fields and provenance links
-4. **Phase 1 evidence records** — raw extraction provenance
+### Architecture
 
-Phase 5 will calculate transparent, formula-visible trust scores ($S_{\text{overall}}$) displaying exact component weights and conflict penalties.
+```
+NormalizedProduct (Phase 2) + ValidationReport (Phase 3) + ProductEnrichment (Phase 4)
+                                    v
+                 MotorTrustEvaluator (productiq/trust/evaluator.py)
+                                    v
+   [Attribute Trust Engine]  — independently checks Phase 1 evidence & Phase 3 rules
+   [Claim Trust Engine]      — classifies AI claims & checks underlying attribute status
+   [Review Queue Builder]    — generates structured action items with WHAT/WHY/ACTION
+   [Deterministic Scorer]    — calculates S = clamp(0.35C + 0.35V + 0.30D - P, 0.0, 1.0)
+   [Publishability Engine]   — gates attributes into PUBLISHABLE vs REVIEW_REQUIRED
+                                    v
+                 ProductTrustReport (12 x trust_report.json)
+```
+
+### Key Highlights & Real Data Verification
+
+1. **Known Conflict Hard Gate (`PIQ-W22SP-4P-1.1` — `rated_current`):**
+   - Discrepancy between PDF brochure (2.34 A) and legacy CSV (7.22 A) is assigned `TrustStatus.CONFLICTED` and `PublishabilityStatus.REVIEW_REQUIRED`.
+   - Zero winner picked (`canonical_value = null`).
+   - Generates action item `REV-PIQ-W22SP-4P-1.1-rated_current-conflict` with explicit recommended action.
+2. **Clean Publishable Parameter (`PIQ-W22SP-4P-1.1` — `rated_voltage`):**
+   - Clean 400.0 V with manufacturer datasheet evidence and PASS validation is assigned `TrustStatus.TRUSTED` and `PublishabilityStatus.PUBLISHABLE`.
+3. **Deterministic Math:**
+   - Evaluates all 12 products in milliseconds with zero LLM API costs.
+   - Outputs full mathematical formula string for visual auditability.
+
+---
+
+## Verification & Audit Checklist
+
+```bash
+# Verify Phase 0 Foundation
+python scripts/verify_phase0.py       # 11/11 PASSED
+
+# Verify Phase 1 Extraction
+python scripts/verify_phase1.py       # 11/11 PASSED
+
+# Verify Phase 2 Normalization
+python scripts/verify_phase2.py       # 13/13 PASSED
+
+# Verify Phase 3 Validation
+python -X utf8 scripts/verify_phase3.py  # 16/16 PASSED
+
+# Verify Phase 4 AI Enrichment
+python -X utf8 scripts/verify_phase4.py  # 18/18 PASSED
+
+# Verify Phase 5 Trust Intelligence
+python -X utf8 scripts/verify_phase5.py  # 20/20 PASSED
+
+# Run full pytest regression suite
+python -m pytest tests/ -v            # 679/679 PASSED
+```
+
+---
+
+## What's Next: Phase 6 (Product Intelligence UI / Dashboard)
+
+**Status:** `NOT STARTED`
+
+Phase 6 will consume the JSON artifacts created across Phases 1–5 to render an interactive web dashboard:
+- Visual specification cards with color-coded badges (`Verified`, `Inferred`, `Conflicted`, `Unknown`)
+- Interactive review queue for catalog engineers to resolve conflicts with justification
+- Dual-source provenance inspector with side-by-side evidence diffs.
+
 

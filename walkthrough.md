@@ -26,13 +26,17 @@ Raw manufacturer documents → structured, normalized, explainable motor product
 │              NORMALIZED PRODUCT LAYER                        │
 │  12 × normalized_product.json                               │
 │  Canonical units  │  Full provenance  │  Conflict flags     │
-└────────────────────────┬────────────────────────────────────┘
-                         │ Phase 3 (future)
-                         ▼
-                   VALIDATION + TRUST SCORING
-                         │ Phase 4 (future)
-                         ▼
-                 ENRICHMENT + DASHBOARD
+└────────────────────────┤─────────────────────────────────────────┘
+                         | Phase 3 Validation
+                         v
+┌─────────────────────────────────────────────────────────────┐
+│              VALIDATION LAYER (COMPLETE)                     │
+│  12 x validation_report.json                                │
+│  409 findings  |  61 conflicts  |  Engineering checks       │
+└─────────────────────────┬───────────────────────────────────┘
+                          | Phase 4 (future)
+                          v
+                  ENRICHMENT + DASHBOARD
 ```
 
 ---
@@ -210,19 +214,77 @@ The same evidence input always produces byte-for-byte identical normalized outpu
 ## Verification
 
 ```bash
-python scripts/verify_phase0.py   # 11/11 ✅
-python scripts/verify_phase1.py   # 11/11 ✅
-python scripts/verify_phase2.py   # 13/13 ✅
-python -m pytest tests/ -v        # 518 passed, 3 skipped ✅
+python scripts/verify_phase0.py   # 11/11
+python scripts/verify_phase1.py   # 11/11
+python scripts/verify_phase2.py   # 13/13
+python -X utf8 scripts/verify_phase3.py  # 16/16
+python -m pytest tests/ -v        # 634 passed (116 new in Phase 3)
 ```
 
 ---
 
-## What's Next (Phase 3 — Validation)
+## Phase 3 — Validation Engine (Complete)
 
-Phase 3 will receive from Phase 2:
-1. **12 × `normalized_product.json`** — canonical fields with `outcome` flags
-2. **49 conflict records** — each with both evidence sources preserved
-3. **144 unmapped evidence refs** — torque, inertia, partial-load data for future field expansion
+Phase 3 implemented a deterministic, offline-capable validation engine:
 
-Phase 3 will use cross-field physics equations to resolve conflicts and assign final `DataStatus` (Verified / Inferred / Conflicted / Unknown) to each field.
+### Architecture
+
+```
+NormalizedProduct
+      v
+ MotorValidator (productiq/validation/validator.py)
+      v
+ [Category A] Schema       — canonical units, version
+ [Category B] Required     — rated_power, rated_voltage, rated_speed
+ [Category D] Range        — positive values, physical bounds
+ [Category F] Consistency  — cross-source conflicts
+ [Category G] Engineering  — Torque-Power-RPM, IE3 efficiency, synchronous speed
+ [Category H] Missing      — optional field inventory
+ [Category I] Known conflicts — PDF 2.34 A vs CSV 7.22 A
+      v
+ProductValidationReport (409 findings per batch)
+```
+
+### Key outcomes
+
+| Metric | Value |
+|---|---|
+| Products validated | 12 / 12 |
+| Total findings | 409 |
+| PASS findings | 311 (76%) |
+| CONFLICT findings | 61 |
+| WARNING findings | 2 |
+| Conflicts silently resolved | **0** |
+| Engineering checks | Torque (PASS), Synchronous speed (PASS), IE3 efficiency |
+
+### Hard gate: known conflict
+
+Rule `CONFLICT_RATED_CURRENT_PDF_VS_CSV` fires for `PIQ-W22SP-4P-1.1`:
+
+```
+PDF rated_current = 2.34 A  (source: WEG W22 brochure, page 5, table row)
+CSV rated_current = 7.22 A  (source: legacy_motors.csv, col full_load_current_a)
+Note: 7.22 matches full_load_torque_nm (Nm) — possible mislabeling
+Action: CONFLICT finding, canonical_value = null — no winner picked
+```
+
+### Engineering plausibility
+
+For `PIQ-W22SP-4P-1.1` (1.1 kW, 1455 rpm, reported T = 7.22 Nm):
+```
+T_expected = (1.1 x 1000 x 60) / (2 x pi x 1455) = 7.219 Nm
+Difference = 0.0%  ->  PASS (tolerance: 15%)
+```
+
+### What's Next (Phase 4)
+
+Phase 4 (Enrichment) will receive:
+1. **12 x `validation_report.json`** — 409 findings with status, severity, provenance
+2. **Fields with `NOT_CHECKED`** — optional fields that could be enriched via grounded LLM reasoning
+3. **Conflict findings** — explicit records of what remains unresolved for LLM reasoning with citation requirements
+
+Phase 4 constraints:
+- Never modify fields that Phase 3 validated as PASS
+- Mark all LLM-inferred fields as `Inferred`, never `Verified`
+- Every LLM claim requires a manufacturer citation
+- Conflicts remain unresolved until Phase 5 trust scoring

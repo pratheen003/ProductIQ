@@ -145,12 +145,59 @@ The raw CSV file was **intentionally left unedited** to preserve authentic legac
 
 ---
 
-## 8. Phase 3 Handoff: Next Steps
+## 8. Phase 3 — Validation Engine
+
+**Status:** `COMPLETE`
+
+### Work Accomplished:
+- **Validation Models (`productiq/validation/models.py`):**
+  - Defined `ValidationStatus` (`PASS`, `WARNING`, `CONFLICT`, `FAIL`, `NOT_CHECKED`) and `ValidationSeverity` (`INFO`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`).
+  - Defined `ValidationCategory` covering 9 categories (SCHEMA, REQUIRED_FIELD, TYPE, RANGE, UNIT, CONSISTENCY, ENGINEERING, MISSING_DATA, CONFLICT).
+  - Defined `FindingEvidenceRef` capturing full Phase 1/Phase 2 provenance across all findings.
+  - Defined `ValidationFinding`, `ProductValidationReport`, and `BatchValidationReport` with JSON serialization and summary properties.
+- **Rules Engine (`productiq/validation/rules.py`):**
+  - **Schema Conformance:** Canonical unit validation matching Phase 0 registry (`SCHEMA_CANONICAL_UNITS`) and schema version guarding (`SCHEMA_NORMALIZATION_VERSION`).
+  - **Completeness Checks:** Required fields (`rated_power`, `rated_voltage`, `rated_speed`) presence (`REQUIRED_FIELD_PRESENCE`), important fields (`IMPORTANT_FIELD_PRESENCE`), and missing data inventory (`MISSING_DATA_INVENTORY`).
+  - **Range & Plausibility Validation:** Strictly positive power (> 0 kW), voltage (> 0 V), speed (> 0 rpm), current (> 0 A), weight (> 0 kg); physical bounds for efficiency ∈ [0, 100]% and power factor ∈ [0.0, 1.0].
+  - **Cross-Source Consistency:** Explicit surfacing of all multi-source disagreements as `CONFLICT` findings, preserving both sources and values without picking an arbitrary winner.
+  - **Engineering Checks:**
+    - Torque-Power-Speed mechanical relationship check ($T = \frac{P \times 1000 \times 60}{2\pi \times N}$ within 15% tolerance). For 1.1 kW, 1455 rpm: calculated $T \approx 7.219\text{ Nm}$, reported $7.22\text{ Nm}$ (0.0% difference → `PASS`).
+    - Synchronous speed / slip validation ($n_{\text{rated}} < n_s = \frac{120 \times f}{p}$; slip = 3.0% → `PASS`).
+    - IE3 efficiency plausibility check (flagging efficiency < 80% as warning for IE3 class).
+  - **Specific Conflict Detection:** Hard-gate demo rule `CONFLICT_RATED_CURRENT_PDF_VS_CSV` detecting the PDF (2.34 A) vs CSV (7.22 A) discrepancy, documenting the torque/current column mislabeling hypothesis without silently overriding data.
+- **Validator & Batch Pipeline (`productiq/validation/validator.py`, `scripts/run_validation.py`):**
+  - Ingests `normalized_product.json` for all 12 products, applies validation rules in deterministic order, writes `data/processed/<product_id>/validation_report.json` and `data/processed/batch_validation_report.json`.
+- **Phase 3 Verification & Tests (`scripts/verify_phase3.py`, `tests/test_phase3.py`):**
+  - 16 automated audit checks in `scripts/verify_phase3.py`.
+  - 116 tests in `tests/test_phase3.py` covering regression, models, rules, known conflict detection, engineering plausibility, provenance preservation, all 12 products, no fabrication, and determinism.
+
+### Verified Final Validation Metrics:
+- **Products Processed:** 12 / 12 (100% success)
+- **Total Findings:** 409
+- **PASS Findings:** 311 (76.0%)
+- **CONFLICT Findings:** 61 (all multi-source conflicts surfaced, 0 silently resolved)
+- **WARNING Findings:** 2 (partial-load efficiency thresholds on 6P motor)
+- **FAIL Findings:** 0
+- **NOT_CHECKED Findings:** 35 (cleanly recorded optional missing attributes)
+- **Fabricated Values / Winners Picked:** 0
+
+### Test & Regression Audit:
+- **`pytest tests/ -v`:** **634 passed, 3 skipped, 0 failed** in 25.50s.
+- **Phase 0 Verification:** 11/11 checks passed.
+- **Phase 1 Verification:** 11/11 checks passed.
+- **Phase 2 Verification:** 13/13 checks passed.
+- **Phase 3 Verification:** 16/16 checks passed.
+
+---
+
+## 9. Phase 4 Handoff: Next Steps
 
 **Status:** `NOT STARTED`
 
-Phase 3 will implement the **Validation Layer** (`productiq/validation/`):
-1. Ingest `NormalizedProduct` records and `ConflictRecord` items from Phase 2.
-2. Apply electromechanical physics checks ($P = \sqrt{3} \times V \times I \times \text{PF} \times \eta$, slip validation).
-3. Resolve discrepancies (e.g. identify that CSV `full_load_current_a = 7.22` is torque, confirming PDF `2.34 A` as rated current).
-4. Assign final canonical 4-tier `DataStatus` (`Verified`, `Inferred`, `Conflicted`, `Unknown`).
+Phase 4 will implement **Grounded LLM Enrichment** (`productiq/enrichment/`):
+1. Ingest `ProductValidationReport` and `NormalizedProduct` records.
+2. Identify fields with `outcome=MISSING` or `status=NOT_CHECKED` for potential grounded inference.
+3. Utilize LLM reasoning with strict manufacturer citation requirements.
+4. Mark all LLM-derived fields as `Inferred` (never `Verified`).
+5. Never modify fields that Phase 3 validated as `PASS` or flagged as `CONFLICT`.
+

@@ -31,13 +31,16 @@ RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VAL
 
 ---
 
-### Phase 3 — Engineering Validation & Physics Checks
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Apply fundamental electromechanical physics rules to detect errors and contradictions:
-  - Power balance equation: $P = \sqrt{3} \times V \times I \times \text{PF} \times \eta$
-  - Synchronous speed / slip validation: $n_s = \frac{120 \times f}{p}$; verify $n_{\text{rated}} < n_s$.
-  - IEC 60034-30-1 efficiency tier verification.
-- **Expected Output:** `PhysicsValidator`, automated setting of `DataStatus.CONFLICTED` with exact mathematical justifications.
+### Phase 3 — Engineering Validation & Rules Engine
+- **Status:** `COMPLETE` ✅
+- **Objective:** Apply deterministic, explainable electromechanical engineering rules and cross-source consistency checks:
+  - Canonical unit conformance (`SCHEMA_CANONICAL_UNITS`) and schema version guarding.
+  - Required and important field completeness checks (`REQUIRED_FIELD_PRESENCE`, `IMPORTANT_FIELD_PRESENCE`).
+  - Strict range and physical plausibility validation (positive power, voltage, speed, current, weight; efficiency ∈ [0, 100]%, PF ∈ [0, 1]).
+  - Cross-source conflict surfacing with dual-evidence provenance preserved.
+  - Engineering checks: Torque-Power-Speed mechanical relationship ($T = \frac{P \times 1000 \times 60}{2\pi \times N}$), synchronous speed / slip ($n_{\text{rated}} < n_s$), and IE3 class efficiency plausibility.
+  - Specific conflict detection: PDF 2.34 A vs CSV 7.22 A (`CONFLICT_RATED_CURRENT_PDF_VS_CSV`), identifying likely torque/current mislabeling without picking a winner.
+- **Outputs:** `productiq/validation/models.py`, `productiq/validation/rules.py`, `productiq/validation/validator.py`, `data/processed/<product_id>/validation_report.json`, `data/processed/batch_validation_report.json`, `scripts/run_validation.py`, `scripts/verify_phase3.py`.
 
 ---
 

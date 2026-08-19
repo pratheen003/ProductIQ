@@ -3,7 +3,8 @@
 [![Phase 0: Foundation](https://img.shields.io/badge/Phase%200-Complete-brightgreen.svg)](#phase-status)
 [![Phase 1: Extraction](https://img.shields.io/badge/Phase%201-Complete-brightgreen.svg)](#phase-status)
 [![Phase 2: Normalization](https://img.shields.io/badge/Phase%202-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-518%20passed-success.svg)](#running-tests)
+[![Phase 3: Validation](https://img.shields.io/badge/Phase%203-Complete-brightgreen.svg)](#phase-status)
+[![Tests](https://img.shields.io/badge/Tests-634%20passed-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
@@ -31,8 +32,8 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 
 - **Immutable Provenance:** Every technical specification is wrapped in a container that tracks every document, page, and row that asserted it.
 - **Strict 4-Tier Status System:** Every field is explicitly classified as `Verified`, `Inferred`, `Conflicted`, or `Unknown`.
-- **Zero-Hallucination Extraction:** Raw extraction captures only what the source explicitly states. Missing values remain `Unknown`; failed network requests record errors without inventing mock data.
-- **Physics-Grounded Validation (Planned):** Engineering formulas (power balance, slip, efficiency standards) are applied to validate parameters.
+- **Zero-Hallucination & Anti-Overwriting Principle:** The system preserves source evidence and does not silently invent or resolve conflicting values. Missing values remain `Unknown`; failed network requests record errors without inventing mock data.
+- **Physics-Grounded Validation (Complete ✅):** Deterministic electromechanical engineering formulas (mechanical torque-power-speed, synchronous speed/slip, IEC 60034-30-1 efficiency) validate parameters.
 - **Explainable Trust Scoring (Planned):** Trust scores display their exact formula rather than an opaque score.
 
 ---
@@ -80,8 +81,12 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 │   Provenance-preserving, conflict-surfacing, no-LLM         │
 │   data/processed/<product_id>/normalized_product.json        │
 ├─────────────────────────────────────────────────────────────┤
-│             PHASE 3: VALIDATION (Planned)                   │
-│   Electromechanical physics checks (P = √3·V·I·PF·η)        │
+│             PHASE 3: VALIDATION (COMPLETE ✅)                │
+│   409 deterministic findings across 12 products             │
+│   61 conflicts surfaced, 0 silently resolved                 │
+│   Engineering: Torque-Power-RPM, IE3, synchronous speed      │
+│   Hard gate: 2.34 A (PDF) vs 7.22 A (CSV) detected          │
+│   data/processed/<product_id>/validation_report.json        │
 ├─────────────────────────────────────────────────────────────┤
 │             PHASE 4: GROUNDED ENRICHMENT (Planned)          │
 │   LLM inference for Unknown fields with citations           │
@@ -103,7 +108,7 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 | **Phase 0** | **Foundation & Schema** | **COMPLETE** ✅ | Frozen Pydantic v2 `MotorProduct` schema, 4-tier `DataStatus`, `CANONICAL_UNITS`, config & logging |
 | **Phase 1** | **Extraction Layer** | **COMPLETE** ✅ | Multi-source extractors (PDF, CSV, Web), 1,837 evidence records, automated batch pipeline |
 | **Phase 2** | **Normalization** | **COMPLETE** ✅ | Deterministic unit conversion (HP→kW, W→kW, g→kg), provenance preservation, conflict surfacing, 12/12 products normalized |
-| **Phase 3** | **Validation** | **NOT STARTED** ⏳ | Physics plausibility checks & conflict resolution |
+| **Phase 3** | **Validation** | **COMPLETE** ✅ | Deterministic rules engine, 409 findings, 61 conflicts surfaced (never resolved), torque-power-RPM engineering check, known 2.34A vs 7.22A conflict explicitly detected |
 | **Phase 4** | **AI Enrichment** | **NOT STARTED** ⏳ | Grounded LLM enrichment of Unknown fields |
 | **Phase 5** | **Trust Scoring** | **NOT STARTED** ⏳ | Formula-visible explainable scoring engine |
 | **Phase 6** | **Product UI** | **NOT STARTED** ⏳ | Visual dashboard & conflict review queue |
@@ -152,12 +157,19 @@ pip install -r requirements.txt
 ### 3. Environment Configuration
 ```bash
 cp .env.example .env
-# Edit .env to set your LLM_API_KEY (optional for Phase 1 extraction)
+# Edit .env to set your LLM_API_KEY (optional for Phase 1-3 offline execution)
 ```
 
-### 4. Run Batch Extraction (Phase 1)
+### 4. Run Pipeline Batch Runners
 ```bash
+# Run Phase 1 Batch Extraction
 python scripts/run_extraction.py
+
+# Run Phase 2 Batch Normalization
+python scripts/run_normalization.py
+
+# Run Phase 3 Batch Validation
+python scripts/run_validation.py
 ```
 
 ### 5. Run Verification Audits
@@ -167,6 +179,12 @@ python scripts/verify_phase0.py
 
 # Verify Phase 1 Extraction Layer
 python scripts/verify_phase1.py
+
+# Verify Phase 2 Normalization Layer
+python scripts/verify_phase2.py
+
+# Verify Phase 3 Validation Layer
+python -X utf8 scripts/verify_phase3.py
 ```
 
 ---
@@ -179,8 +197,8 @@ python -m pytest tests/ -v
 ```
 
 **Current Test Results:**
-- **266 passed, 3 skipped, 0 failed** across 8 test suites.
-- *(The 3 skipped tests represent live LLM API ping tests due to account quota exhaustion; all unit, schema, extraction, failure handling, and regression tests pass).*
+- **634 passed, 3 skipped, 0 failed** across 10 test suites.
+- *(The 3 skipped tests represent live LLM API ping tests due to account quota exhaustion; all unit, schema, extraction, normalization, validation, failure handling, and regression tests pass).*
 
 ---
 
@@ -192,7 +210,7 @@ ProductIq/
 │   ├── csv/legacy_motors.csv            # 12-row legacy catalog dataset
 │   ├── pdf/WEG_W22_Severe_Process_...   # 2.5 MB manufacturer PDF
 │   ├── web/*.url.txt                    # 12 catalog web URL references
-│   ├── processed/                       # Phase 1 extracted evidence JSON files
+│   ├── processed/                       # Evidence, normalized, and validation JSON files
 │   ├── dataset_manifest.json            # Product identity and source registry
 │   └── README.md                        # Dataset provenance & copyright notice
 ├── docs/
@@ -200,8 +218,12 @@ ProductIq/
 │   ├── DATASET.md                       # Comprehensive motor specifications
 │   ├── DEVELOPMENT_LOG.md               # Truthful development chronology
 │   ├── EXTRACTION.md                    # Extraction layer technical specification
+│   ├── NORMALIZATION.md                 # Normalization layer technical specification
+│   ├── VALIDATION.md                    # Validation layer technical specification
 │   ├── PHASE_0.md                       # Phase 0 foundation reference
 │   ├── PHASE_1.md                       # Phase 1 extraction reference
+│   ├── PHASE_2.md                       # Phase 2 normalization reference
+│   ├── PHASE_3.md                       # Phase 3 validation reference
 │   ├── ROADMAP.md                       # Project roadmap (Phase 0–8)
 │   └── SCHEMA.md                        # Frozen canonical schema documentation
 ├── productiq/
@@ -214,8 +236,20 @@ ProductIq/
 │   │   ├── pdf_extractor.py
 │   │   ├── csv_extractor.py
 │   │   └── web_extractor.py
-│   ├── normalization/                   # Phase 2 stub (Not Started)
-│   ├── validation/                      # Phase 3 stub (Not Started)
+│   ├── normalization/                   # Phase 2: Unit conversion, parsing, normalization
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── unit_converter.py
+│   │   ├── value_parser.py
+│   │   ├── attribute_mapper.py
+│   │   ├── base.py
+│   │   └── normalizer.py
+│   ├── validation/                      # Phase 3: Deterministic rules & engineering validator
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── rules.py
+│   │   ├── base.py
+│   │   └── validator.py
 │   ├── enrichment/                      # Phase 4 stub (Not Started)
 │   ├── trust/                           # Phase 5 stub (Not Started)
 │   ├── dashboard/                       # Phase 6+ stub (Not Started)
@@ -224,9 +258,13 @@ ProductIq/
 │   └── logging_setup.py                 # Structured logging
 ├── scripts/
 │   ├── run_extraction.py                # Batch extraction CLI runner
+│   ├── run_normalization.py             # Batch normalization CLI runner
+│   ├── run_validation.py                # Batch validation CLI runner
 │   ├── verify_phase0.py                 # Phase 0 audit script (11 checks)
-│   └── verify_phase1.py                 # Phase 1 audit script (11 checks)
-├── tests/                               # 266 unit & integration tests
+│   ├── verify_phase1.py                 # Phase 1 audit script (11 checks)
+│   ├── verify_phase2.py                 # Phase 2 audit script (13 checks)
+│   └── verify_phase3.py                 # Phase 3 audit script (16 checks)
+├── tests/                               # 634 unit & integration tests
 │   ├── test_schema.py
 │   ├── test_phase0.py
 │   ├── test_llm.py
@@ -234,10 +272,13 @@ ProductIq/
 │   ├── test_extraction_pdf.py
 │   ├── test_extraction_csv.py
 │   ├── test_extraction_web.py
-│   └── test_phase1.py
+│   ├── test_phase1.py
+│   ├── test_phase2.py
+│   └── test_phase3.py
 ├── .env.example                         # Environment template (no secrets)
 ├── .gitignore                           # Git ignore rules
 ├── README.md                            # Main project overview
+├── walkthrough.md                       # Complete engineering walkthrough
 └── requirements.txt                     # Project dependencies
 ```
 
@@ -246,11 +287,11 @@ ProductIq/
 ## 11. Known Limitations
 
 1. **WEG.net Anti-Bot Blocking:** Live HTTP requests to `weg.net` catalog URLs are blocked with HTTP 403 Forbidden. ProductIQ captures this failure state verbatim without hallucinating data.
-2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally preserved for Phase 2/3 conflict detection.
+2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally surfaced as a conflict by Phase 2/3 without picking an arbitrary winner.
 
 ---
 
 ## 12. Roadmap & Next Steps
 
 See [`docs/ROADMAP.md`](docs/ROADMAP.md) for full phase-by-phase objectives.  
-**Immediate Next Step:** Begin **Phase 2 — Normalization** (`productiq/normalization/`).
+**Immediate Next Step:** **Phase 4 — Grounded LLM Enrichment** (`productiq/enrichment/`) [NOT STARTED].

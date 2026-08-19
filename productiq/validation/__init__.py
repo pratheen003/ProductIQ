@@ -1,17 +1,46 @@
 """
-ProductIQ Validation Module
----------------------------
-Phase 3 target: Engineering plausibility validation using real physics.
+ProductIQ Validation Package — Phase 3
+========================================
+Public API for the validation engine.
 
-Responsibilities:
-- Verify P = √3 × V × I × PF × η for 3-phase motors
-- Verify synchronous speed: ns = 120 × f / poles; validate rated_speed < ns
-- Verify efficiency bounds for IE3 class motors (IEC 60034-30-1)
-- Flag implausible values as Conflicted — never silently discard
-- Surface all failures with formula citations, not arbitrary thresholds
+Phase 3 applies deterministic, explainable rules to NormalizedProduct instances
+from Phase 2, producing ValidationFinding instances and ProductValidationReport
+objects. No LLM required. Works fully offline.
 
-PHASE 0 STATUS: Stub only. No validation logic implemented.
-
-NOTE: Validation failures must set field status to Conflicted with an
-explanatory source entry — never to Unknown and never silently ignored.
+Usage:
+    from productiq.validation import MotorValidator, BatchValidator
+    from productiq.validation.models import (
+        ProductValidationReport, ValidationFinding,
+        ValidationStatus, ValidationSeverity, ValidationCategory,
+    )
 """
+from productiq.validation.base import BaseValidator
+from productiq.validation.models import (
+    ValidationStatus,
+    ValidationSeverity,
+    ValidationCategory,
+    FindingEvidenceRef,
+    ValidationFinding,
+    ProductValidationReport,
+    BatchValidationReport,
+)
+from productiq.validation.validator import (
+    MotorValidator,
+    BatchValidator,
+)
+
+__all__ = [
+    # Base
+    "BaseValidator",
+    # Models
+    "ValidationStatus",
+    "ValidationSeverity",
+    "ValidationCategory",
+    "FindingEvidenceRef",
+    "ValidationFinding",
+    "ProductValidationReport",
+    "BatchValidationReport",
+    # Validators
+    "MotorValidator",
+    "BatchValidator",
+]

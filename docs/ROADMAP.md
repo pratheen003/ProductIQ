@@ -44,10 +44,15 @@ RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VAL
 
 ---
 
-### Phase 4 — Grounded LLM Enrichment
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Utilize LLM reasoning to enrich genuinely `Unknown` fields only, strictly requiring citations to manufacturer documentation and marking outputs as `Inferred` (never `Verified`).
-- **Expected Output:** `GroundedEnricher`, enriched `MotorProduct` records with LLM prompt/version provenance.
+### Phase 4 — Grounded AI Enrichment (Groq Provider)
+- **Status:** `COMPLETE` ✅
+- **Objective:** Utilize grounded LLM reasoning via Groq / OpenAI provider abstraction to generate structured commercial intelligence from validated data:
+  - Commercial synthesis and technical descriptions grounded strictly in verified specifications.
+  - Recommended target industrial applications (pumps, fans, conveyors, compressors) and search keywords.
+  - Inferred parameter completion (frequency, poles) strictly marked with `DataStatus.INFERRED` and LLM provenance.
+  - Anti-hallucination contract enforcing clear separation between `source_backed_claims` and `inferred_claims`.
+  - Unresolved conflict preservation ensuring multi-source discrepancies are highlighted with warnings rather than silently picked winners.
+- **Outputs:** `productiq/enrichment/models.py`, `productiq/enrichment/prompts.py`, `productiq/enrichment/service.py`, `data/processed/<product_id>/enrichment.json`, `data/processed/batch_enrichment_report.json`, `scripts/run_enrichment.py`, `scripts/verify_phase4.py`.
 
 ---
 

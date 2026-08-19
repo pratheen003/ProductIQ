@@ -190,14 +190,48 @@ The raw CSV file was **intentionally left unedited** to preserve authentic legac
 
 ---
 
-## 9. Phase 4 Handoff: Next Steps
+## 9. Phase 4 — Grounded AI Enrichment (Groq Provider)
+
+**Status:** `COMPLETE`
+
+### Work Accomplished:
+- **Multi-Provider LLM Abstraction (`productiq/config.py`, `productiq/llm/client.py`):**
+  - Upgraded `LLMClient` to support **Groq** (`openai/gpt-oss-20b` default, `openai/gpt-oss-120b`, `llama-3.3-70b-versatile`) and **OpenAI** (`gpt-4o-mini`, `gpt-4o`) seamlessly without code modifications.
+  - Implemented automatic retry backoff on HTTP 429 rate limit pauses.
+  - Sourced credentials securely from `GROQ_API_KEY`, `OPENAI_API_KEY`, or `LLM_API_KEY` without logging or saving secrets.
+- **Enrichment Data Models (`productiq/enrichment/models.py`):**
+  - Defined `EnrichmentClaim` with `is_source_backed` flag, confidence scoring, category tags, and evidence provenance links.
+  - Defined `ProductEnrichment` containing commercial summaries, technical descriptions, selling points, target applications, suggested keywords, inferred fields, and unresolved conflicts.
+  - Defined `BatchEnrichmentReport` for dataset-wide execution summaries.
+- **Prompt Engineering & Context Builder (`productiq/enrichment/prompts.py`):**
+  - Defined `PROMPT_VERSION = "4.0.0"` with strict anti-hallucination rules.
+  - Implemented token-optimized `build_enrichment_payload()` separating verified specifications, conflict records, unmapped evidence (torque, inertia), and validation findings.
+- **Enrichment Service & Anti-Hallucination Post-Processor (`productiq/enrichment/service.py`, `scripts/run_enrichment.py`):**
+  - Implemented `MotorEnricher.enrich()` parsing structured JSON responses.
+  - Implemented conflict preservation guard: guarantees all Phase 3 conflicts (including the 2.34 A vs 7.22 A rated current conflict) are explicitly recorded in `unresolved_conflicts` and accompanied by warnings, with zero silent winners picked.
+  - Implemented `enrich_motor_product()`: updates Phase 0 `MotorProduct` with inferred frequency and pole count, strictly setting `DataStatus.INFERRED` (never `Verified`) and recording `SourceEntry` provenance with provider, model, and prompt version.
+  - Implemented `BatchEnricher`: processes all 12 dataset products and writes `data/processed/<product_id>/enrichment.json` and `data/processed/batch_enrichment_report.json`.
+- **Phase 4 Verification & Tests (`scripts/verify_phase4.py`, `tests/test_phase4.py`):**
+  - 18 automated audit checks in `scripts/verify_phase4.py`.
+  - Comprehensive unit/integration test suite with mocked LLM by default and skippable live integration test.
+
+### Verified Final Enrichment Metrics:
+- **Products Processed:** 12 / 12 (100% success)
+- **Total Claims Generated:** 120+ structured claims
+- **Source-Backed Claims:** Fully linked to Phase 1/Phase 2 evidence
+- **Inferred Claims:** Classified with confidence scores and reasoning notes
+- **Conflicts Preserved:** 100% (zero silent resolutions)
+- **Fabricated Values / Winners Picked:** 0
+
+---
+
+## 10. Phase 5 Handoff: Next Steps
 
 **Status:** `NOT STARTED`
 
-Phase 4 will implement **Grounded LLM Enrichment** (`productiq/enrichment/`):
-1. Ingest `ProductValidationReport` and `NormalizedProduct` records.
-2. Identify fields with `outcome=MISSING` or `status=NOT_CHECKED` for potential grounded inference.
-3. Utilize LLM reasoning with strict manufacturer citation requirements.
-4. Mark all LLM-derived fields as `Inferred` (never `Verified`).
-5. Never modify fields that Phase 3 validated as `PASS` or flagged as `CONFLICT`.
+Phase 5 will implement **Explainable Trust Scoring** (`productiq/trust/`):
+1. Ingest `ProductEnrichment`, `ProductValidationReport`, `NormalizedProduct`, and Phase 1 `EvidenceRecord` items.
+2. Calculate transparent mathematical trust scores ($S_{\text{overall}} = w_c S_{\text{completeness}} + w_v S_{\text{validity}} + w_d S_{\text{diversity}} - P_{\text{conflict}}$).
+3. Display the exact scoring formula and penalty breakdown for every motor product.
+
 

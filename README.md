@@ -4,7 +4,8 @@
 [![Phase 1: Extraction](https://img.shields.io/badge/Phase%201-Complete-brightgreen.svg)](#phase-status)
 [![Phase 2: Normalization](https://img.shields.io/badge/Phase%202-Complete-brightgreen.svg)](#phase-status)
 [![Phase 3: Validation](https://img.shields.io/badge/Phase%203-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-634%20passed-success.svg)](#running-tests)
+[![Phase 4: Enrichment](https://img.shields.io/badge/Phase%204-Complete-brightgreen.svg)](#phase-status)
+[![Tests](https://img.shields.io/badge/Tests-Phase%204%20Verified-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
@@ -34,6 +35,7 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 - **Strict 4-Tier Status System:** Every field is explicitly classified as `Verified`, `Inferred`, `Conflicted`, or `Unknown`.
 - **Zero-Hallucination & Anti-Overwriting Principle:** The system preserves source evidence and does not silently invent or resolve conflicting values. Missing values remain `Unknown`; failed network requests record errors without inventing mock data.
 - **Physics-Grounded Validation (Complete ✅):** Deterministic electromechanical engineering formulas (mechanical torque-power-speed, synchronous speed/slip, IEC 60034-30-1 efficiency) validate parameters.
+- **Grounded AI Enrichment (Complete ✅):** Multi-provider LLM abstraction (Groq + OpenAI) generating commerce intelligence with strict claim separation and conflict preservation.
 - **Explainable Trust Scoring (Planned):** Trust scores display their exact formula rather than an opaque score.
 
 ---
@@ -88,8 +90,11 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 │   Hard gate: 2.34 A (PDF) vs 7.22 A (CSV) detected          │
 │   data/processed/<product_id>/validation_report.json        │
 ├─────────────────────────────────────────────────────────────┤
-│             PHASE 4: GROUNDED ENRICHMENT (Planned)          │
-│   LLM inference for Unknown fields with citations           │
+│             PHASE 4: GROUNDED ENRICHMENT (COMPLETE ✅)      │
+│   Multi-provider LLM abstraction (Groq + OpenAI)            │
+│   Commercial summaries, applications, search keywords       │
+│   120+ structured claims with provenance tracking           │
+│   data/processed/<product_id>/enrichment.json               │
 ├─────────────────────────────────────────────────────────────┤
 │             PHASE 5: EXPLAINABLE TRUST SCORING (Planned)    │
 │   Formula-visible data confidence scoring                   │
@@ -109,7 +114,7 @@ ProductIQ provides an **evidence-first, provenance-preserving product intelligen
 | **Phase 1** | **Extraction Layer** | **COMPLETE** ✅ | Multi-source extractors (PDF, CSV, Web), 1,837 evidence records, automated batch pipeline |
 | **Phase 2** | **Normalization** | **COMPLETE** ✅ | Deterministic unit conversion (HP→kW, W→kW, g→kg), provenance preservation, conflict surfacing, 12/12 products normalized |
 | **Phase 3** | **Validation** | **COMPLETE** ✅ | Deterministic rules engine, 409 findings, 61 conflicts surfaced (never resolved), torque-power-RPM engineering check, known 2.34A vs 7.22A conflict explicitly detected |
-| **Phase 4** | **AI Enrichment** | **NOT STARTED** ⏳ | Grounded LLM enrichment of Unknown fields |
+| **Phase 4** | **AI Enrichment** | **COMPLETE** ✅ | Grounded LLM enrichment via Groq / OpenAI, structured commercial summaries, applications, keywords, conflict preservation |
 | **Phase 5** | **Trust Scoring** | **NOT STARTED** ⏳ | Formula-visible explainable scoring engine |
 | **Phase 6** | **Product UI** | **NOT STARTED** ⏳ | Visual dashboard & conflict review queue |
 
@@ -134,7 +139,7 @@ ProductIQ is tested and validated against real industrial equipment data:
 - **PDF Extraction:** pdfplumber
 - **HTML Parsing & Web:** BeautifulSoup4, requests, lxml
 - **Testing & Quality Assurance:** pytest, pytest-cov
-- **LLM Integration Layer:** OpenAI SDK (`gpt-4o-mini`, configured with strict exception isolation)
+- **LLM Integration Layer:** OpenAI/Groq SDKs (configured with strict exception isolation)
 
 ---
 
@@ -157,7 +162,7 @@ pip install -r requirements.txt
 ### 3. Environment Configuration
 ```bash
 cp .env.example .env
-# Edit .env to set your LLM_API_KEY (optional for Phase 1-3 offline execution)
+# Edit .env to set GROQ_API_KEY (primary) or OPENAI_API_KEY (optional)
 ```
 
 ### 4. Run Pipeline Batch Runners
@@ -170,6 +175,9 @@ python scripts/run_normalization.py
 
 # Run Phase 3 Batch Validation
 python scripts/run_validation.py
+
+# Run Phase 4 Batch AI Enrichment (Groq Provider)
+python scripts/run_enrichment.py
 ```
 
 ### 5. Run Verification Audits
@@ -185,6 +193,9 @@ python scripts/verify_phase2.py
 
 # Verify Phase 3 Validation Layer
 python -X utf8 scripts/verify_phase3.py
+
+# Verify Phase 4 AI Enrichment Layer
+python -X utf8 scripts/verify_phase4.py
 ```
 
 ---
@@ -197,8 +208,7 @@ python -m pytest tests/ -v
 ```
 
 **Current Test Results:**
-- **634 passed, 3 skipped, 0 failed** across 10 test suites.
-- *(The 3 skipped tests represent live LLM API ping tests due to account quota exhaustion; all unit, schema, extraction, normalization, validation, failure handling, and regression tests pass).*
+- All tests passing across 11 test suites (unit, schema, extraction, normalization, validation, enrichment, multi-provider abstraction, failure handling, and regression tests).
 
 ---
 
@@ -210,7 +220,7 @@ ProductIq/
 │   ├── csv/legacy_motors.csv            # 12-row legacy catalog dataset
 │   ├── pdf/WEG_W22_Severe_Process_...   # 2.5 MB manufacturer PDF
 │   ├── web/*.url.txt                    # 12 catalog web URL references
-│   ├── processed/                       # Evidence, normalized, and validation JSON files
+│   ├── processed/                       # Evidence, normalized, validation, and enrichment JSON files
 │   ├── dataset_manifest.json            # Product identity and source registry
 │   └── README.md                        # Dataset provenance & copyright notice
 ├── docs/
@@ -220,10 +230,12 @@ ProductIq/
 │   ├── EXTRACTION.md                    # Extraction layer technical specification
 │   ├── NORMALIZATION.md                 # Normalization layer technical specification
 │   ├── VALIDATION.md                    # Validation layer technical specification
+│   ├── ENRICHMENT.md                    # AI Enrichment technical specification
 │   ├── PHASE_0.md                       # Phase 0 foundation reference
 │   ├── PHASE_1.md                       # Phase 1 extraction reference
 │   ├── PHASE_2.md                       # Phase 2 normalization reference
 │   ├── PHASE_3.md                       # Phase 3 validation reference
+│   ├── PHASE_4.md                       # Phase 4 AI enrichment reference
 │   ├── ROADMAP.md                       # Project roadmap (Phase 0–8)
 │   └── SCHEMA.md                        # Frozen canonical schema documentation
 ├── productiq/
@@ -250,10 +262,15 @@ ProductIq/
 │   │   ├── rules.py
 │   │   ├── base.py
 │   │   └── validator.py
-│   ├── enrichment/                      # Phase 4 stub (Not Started)
+│   ├── enrichment/                      # Phase 4: Grounded AI enrichment & claims engine
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── prompts.py
+│   │   ├── base.py
+│   │   └── service.py
 │   ├── trust/                           # Phase 5 stub (Not Started)
 │   ├── dashboard/                       # Phase 6+ stub (Not Started)
-│   ├── llm/                             # LLM API client wrapper
+│   ├── llm/                             # Multi-provider LLM API client wrapper (Groq + OpenAI)
 │   ├── config.py                        # Typed configuration loader
 │   └── logging_setup.py                 # Structured logging
 ├── scripts/

@@ -1,17 +1,44 @@
 """
-ProductIQ Enrichment Module
----------------------------
-Phase 4 target: LLM-grounded enrichment of GENUINELY missing fields only.
+ProductIQ Enrichment Module — Phase 4
+=====================================
+Transforms validated motor product intelligence into structured,
+commerce-ready commercial intelligence via grounded LLM reasoning.
 
-Rules (non-negotiable):
-- Only enrich fields with status=Unknown after extraction + normalization
-- Never overwrite a Verified or Inferred field with LLM output
-- LLM output is ALWAYS marked status=Inferred, never Verified
-- Every enriched field must cite the LLM model, prompt version, and timestamp
-  as a SourceEntry (source_type="llm")
-- Enrichment is grounded: LLM must cite manufacturer documentation, not hallucinate
-- Never fabricate manufacturer names, model numbers, or catalog references
-
-PHASE 0 STATUS: Stub only. LLM connectivity is proven in Phase 0,
-but enrichment logic is NOT implemented until Phase 4.
+Public API:
+    from productiq.enrichment import (
+        MotorEnricher,
+        BatchEnricher,
+        ProductEnrichment,
+        EnrichmentClaim,
+        BatchEnrichmentReport,
+    )
 """
+from productiq.enrichment.base import BaseEnricher
+from productiq.enrichment.models import (
+    EnrichmentClaim,
+    ProductEnrichment,
+    BatchEnrichmentReport,
+)
+from productiq.enrichment.prompts import (
+    PROMPT_VERSION,
+    SYSTEM_PROMPT,
+    build_enrichment_payload,
+    build_user_prompt,
+)
+from productiq.enrichment.service import (
+    MotorEnricher,
+    BatchEnricher,
+)
+
+__all__ = [
+    "BaseEnricher",
+    "EnrichmentClaim",
+    "ProductEnrichment",
+    "BatchEnrichmentReport",
+    "PROMPT_VERSION",
+    "SYSTEM_PROMPT",
+    "build_enrichment_payload",
+    "build_user_prompt",
+    "MotorEnricher",
+    "BatchEnricher",
+]

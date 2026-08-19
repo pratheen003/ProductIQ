@@ -1,9 +1,23 @@
 """
-ProductIQ LLM Package
----------------------
-Exposes the LLM client for use across the pipeline.
-Phase 0: connectivity only. Phase 4+ will add enrichment strategies.
+ProductIQ LLM Module
+====================
+Multi-provider LLM abstraction layer for ProductIQ.
+Supports Groq (primary) and OpenAI (optional).
 """
-from .client import LLMAuthError, LLMClient, LLMConnectionError, LLMError, LLMQuotaError
+from productiq.llm.client import (
+    LLMClient,
+    LLMError,
+    LLMAuthError,
+    LLMConnectionError,
+    LLMQuotaError,
+    LLMRateLimitError,
+)
 
-__all__ = ["LLMClient", "LLMError", "LLMAuthError", "LLMConnectionError", "LLMQuotaError"]
+__all__ = [
+    "LLMClient",
+    "LLMError",
+    "LLMAuthError",
+    "LLMConnectionError",
+    "LLMQuotaError",
+    "LLMRateLimitError",
+]

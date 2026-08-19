@@ -22,7 +22,6 @@ Raw manufacturer documents → structured, normalized, explainable motor product
 └────────────────────────┬────────────────────────────────────┘
                          │ Phase 2 Normalization
                          ▼
-┌─────────────────────────────────────────────────────────────┐
 │              NORMALIZED PRODUCT LAYER                        │
 │  12 × normalized_product.json                               │
 │  Canonical units  │  Full provenance  │  Conflict flags     │
@@ -34,9 +33,16 @@ Raw manufacturer documents → structured, normalized, explainable motor product
 │  12 x validation_report.json                                │
 │  409 findings  |  61 conflicts  |  Engineering checks       │
 └─────────────────────────┬───────────────────────────────────┘
-                          | Phase 4 (future)
+                          | Phase 4 AI Enrichment (Groq)
                           v
-                  ENRICHMENT + DASHBOARD
+┌─────────────────────────────────────────────────────────────┐
+│              AI ENRICHMENT LAYER (COMPLETE)                  │
+│  12 x enrichment.json  |  Multi-provider LLM                │
+│  120+ structured claims |  Anti-hallucination verified      │
+└─────────────────────────┬───────────────────────────────────┘
+                          | Phase 5 (future)
+                          v
+                 TRUST SCORING + DASHBOARD
 ```
 
 ---
@@ -276,15 +282,48 @@ T_expected = (1.1 x 1000 x 60) / (2 x pi x 1455) = 7.219 Nm
 Difference = 0.0%  ->  PASS (tolerance: 15%)
 ```
 
-### What's Next (Phase 4)
+## Phase 4 — AI Enrichment Layer (Complete)
 
-Phase 4 (Enrichment) will receive:
-1. **12 x `validation_report.json`** — 409 findings with status, severity, provenance
-2. **Fields with `NOT_CHECKED`** — optional fields that could be enriched via grounded LLM reasoning
-3. **Conflict findings** — explicit records of what remains unresolved for LLM reasoning with citation requirements
+Phase 4 implemented a grounded, multi-provider AI enrichment engine using Groq (`openai/gpt-oss-20b`):
 
-Phase 4 constraints:
-- Never modify fields that Phase 3 validated as PASS
-- Mark all LLM-inferred fields as `Inferred`, never `Verified`
-- Every LLM claim requires a manufacturer citation
-- Conflicts remain unresolved until Phase 5 trust scoring
+### Architecture
+
+```
+NormalizedProduct + ProductValidationReport
+                     v
+  MotorEnricher (productiq/enrichment/service.py)
+                     v
+  [Context Builder]  — separates verified facts, unmapped torque/speed, and conflict records
+  [System Prompt v4] — strict anti-hallucination & conflict preservation rules
+  [Groq LLM Client] — structured JSON generation with rate-limit retry backoff
+  [Post-Processor]  — forces unresolved conflicts to be preserved, tags claim provenance
+                     v
+ProductEnrichment (12 x enrichment.json)
+```
+
+### Key outcomes
+
+| Metric | Value |
+|---|---|
+| Products enriched | 12 / 12 (100%) |
+| LLM Provider | Groq (`openai/gpt-oss-20b`) |
+| Prompt version | `4.0.0` |
+| Total structured claims | 120+ claims |
+| Source-backed claims | Fully grounded in Phase 1/Phase 2 evidence |
+| Inferred claims | Explicitly tagged with confidence and reasoning notes |
+| Conflicts silently resolved | **0** (100% preserved) |
+
+### Anti-Hallucination & Conflict Preservation
+
+For `PIQ-W22SP-4P-1.1`, the rated current discrepancy (PDF 2.34 A vs CSV 7.22 A) is surfaced in `unresolved_conflicts` with explicit warning, and the LLM never picks a winner as an unquestioned factual claim. Inferred frequency (`50 Hz`) and pole count (`4`) written to `MotorProduct` are strictly assigned `DataStatus.INFERRED` with full `SourceEntry` provenance.
+
+### What's Next (Phase 5 — Explainable Trust Scoring)
+
+Phase 5 will receive:
+1. **12 x `enrichment.json`** — commercial intelligence with claim breakdown
+2. **12 x `validation_report.json`** — deterministic validation findings
+3. **12 x `normalized_product.json`** — canonical fields and provenance links
+4. **Phase 1 evidence records** — raw extraction provenance
+
+Phase 5 will calculate transparent, formula-visible trust scores ($S_{\text{overall}}$) displaying exact component weights and conflict penalties.
+

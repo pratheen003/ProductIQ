@@ -1,0 +1,245 @@
+{
+  "row_id": 65,
+  "mfg_part_num": "WDTS7024RZ",
+  "part_desc": "WDTS7024RZ Dishwasher SS - Display Only",
+  "raw_input": {
+    "row_id": 65,
+    "mfg_part_num": "WDTS7024RZ",
+    "part_desc": "WDTS7024RZ Dishwasher SS - Display Only",
+    "e1_brand": null,
+    "unilog_brand": null,
+    "dib_brand": null,
+    "part_manuf": "Appliance Dealers Cooperative (APPDE)"
+  },
+  "manufacturer_name": {
+    "value": "Whirlpool Corporation",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='WDTS7024RZ'",
+      "Part_Desc='WDTS7024RZ Dishwasher SS - Display Only'"
+    ],
+    "reason": "Canonicalized from approved master table matching 'WDTS7024RZ'."
+  },
+  "brand_name": {
+    "value": "Whirlpool®",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='WDTS7024RZ'",
+      "Part_Desc='WDTS7024RZ Dishwasher SS - Display Only'"
+    ],
+    "reason": "Canonicalized from approved master table matching 'WDTS7024RZ'."
+  },
+  "trade_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": "Not specified in ground truth."
+  },
+  "manufacturer_part_number": {
+    "value": "WDTS7024RZ",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='WDTS7024RZ'"
+    ],
+    "reason": "Primary manufacturer part number from input."
+  },
+  "product_name": {
+    "value": "Dishwasher",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Part_Desc='WDTS7024RZ Dishwasher SS - Display Only'"
+    ],
+    "reason": "Verified against gold standard ground truth."
+  },
+  "series": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "classpath": {
+    "value": "Appliances & Consumer Electronics>Kitchen Appliances>Built-In Dishwashers",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [],
+    "reason": ""
+  },
+  "attributes": [
+    {
+      "label": "Series",
+      "value": "Eco Series",
+      "uom": null,
+      "raw_value": "Eco Series",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Model",
+      "value": "",
+      "uom": null,
+      "raw_value": "",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Number of Wash Cycles",
+      "value": "",
+      "uom": null,
+      "raw_value": "",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Voltage Rating",
+      "value": 120.0,
+      "uom": "V",
+      "raw_value": "120",
+      "raw_uom": "V",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'V' with verified numeric value."
+    },
+    {
+      "label": "Amperage Rating",
+      "value": 10.0,
+      "uom": "A",
+      "raw_value": "10",
+      "raw_uom": "A",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'A' with verified numeric value."
+    },
+    {
+      "label": "Mounting Type",
+      "value": "Built-in",
+      "uom": null,
+      "raw_value": "Built-in",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Plug Type",
+      "value": "",
+      "uom": null,
+      "raw_value": "",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Size",
+      "value": "33-7/16 in H x 23-7/8 in W x 22-5/8 in D",
+      "uom": null,
+      "raw_value": "33-7/16 in H x 23-7/8 in W x 22-5/8 in D",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Depth With Door Open",
+      "value": 50.1875,
+      "uom": "in",
+      "raw_value": "50-3/16",
+      "raw_uom": "in",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'in' with verified numeric value."
+    },
+    {
+      "label": "Minimum Height",
+      "value": 33.4375,
+      "uom": "in",
+      "raw_value": "33-7/16",
+      "raw_uom": "in",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'in' with verified numeric value."
+    },
+    {
+      "label": "Maximum Height",
+      "value": "",
+      "uom": null,
+      "raw_value": "",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Sound Level",
+      "value": 41.0,
+      "uom": "dBA",
+      "raw_value": "41",
+      "raw_uom": "dBA",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'dBA' with verified numeric value."
+    },
+    {
+      "label": "Material",
+      "value": "Stainless Steel",
+      "uom": null,
+      "raw_value": "Stainless Steel",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Color",
+      "value": "Stainless Steel",
+      "uom": null,
+      "raw_value": "Stainless Steel",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    },
+    {
+      "label": "Additional Information",
+      "value": "Folding Tines, Leak Detection System, Moisture Repellent Silverware Basket, Normal Cycle, Quick Wash Cycle, Sani Rinse Option, Sensor Cycle, Triple Wash Spray",
+      "uom": null,
+      "raw_value": "Folding Tines, Leak Detection System, Moisture Repellent Silverware Basket, Normal Cycle, Quick Wash Cycle, Sani Rinse Option, Sensor Cycle, Triple Wash Spray",
+      "raw_uom": null,
+      "status": "Unknown",
+      "confidence": 0.5,
+      "reason": "Unverified unit or format 'None'."
+    }
+  ],
+  "short_desc": {
+    "value": "Whirlpool® WDTS7024RZ Dishwasher",
+    "status": "Verified",
+    "confidence": 0.95,
+    "sources": [
+      "Formula: [Brand] [Part#] [Product Name]"
+    ],
+    "reason": "Synthesized according to standard catalog formatting rules."
+  },
+  "long_desc": {
+    "value": "Whirlpool® Dishwasher, Eco Series, 120 V, 10 A, Built-in Mounting, 33-7/16 in H x 23-7/8 in W x 22-5/8 in D, 50-3/16 in Depth With Door Open, 33-7/16 in Minimum Height, 41 dBA Sound Level, Stainless Steel, Stainless Steel, Additional Information: Folding Tines, Leak Detection System, Moisture Repellent Silverware Basket, Normal Cycle, Quick Wash Cycle, Sani Rinse Option, Sensor Cycle, Triple Wash Spray",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [],
+    "reason": ""
+  },
+  "overall_trust_status": "Verified",
+  "overall_confidence": 1.0,
+  "has_conflicts": false,
+  "unresolved_conflicts": []
+}

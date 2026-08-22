@@ -99,4 +99,41 @@ export const api = {
       total_records_extracted: number;
       products_discovered: number;
     }>("/ingest/demo-run", { method: "POST" }),
+
+  // -----------------------------------------------------------
+  // Catalog Intelligence (Unilog Pivot) API Methods
+  // -----------------------------------------------------------
+  getCatalogProducts: (params?: {
+    page?: number;
+    page_size?: number;
+    status?: string;
+    search?: string;
+    has_conflicts?: boolean;
+  }) => {
+    const q = new URLSearchParams();
+    if (params?.page) q.append("page", params.page.toString());
+    if (params?.page_size) q.append("page_size", params.page_size.toString());
+    if (params?.status) q.append("status", params.status);
+    if (params?.search) q.append("search", params.search);
+    if (params?.has_conflicts !== undefined) q.append("has_conflicts", params.has_conflicts.toString());
+    const qs = q.toString() ? `?${q.toString()}` : "";
+    return fetchAPI<import("./types").CatalogProductsListResponse>(`/catalog/products${qs}`);
+  },
+
+  getCatalogProductDetail: (rowId: number) =>
+    fetchAPI<import("./types").CatalogProductDTO>(`/catalog/products/${rowId}`),
+
+  getCatalogBatchSummary: () =>
+    fetchAPI<any>("/catalog/batch/summary"),
+
+  getCatalogExactMatchEval: () =>
+    fetchAPI<import("./types").CatalogExactMatchEvalDTO>("/catalog/eval/exact-match"),
+
+  getCatalogComplianceEval: () =>
+    fetchAPI<import("./types").CatalogComplianceEvalDTO>("/catalog/eval/compliance"),
+
+  enrichCatalogRow: (rowId: number) =>
+    fetchAPI<import("./types").CatalogProductDTO>(`/catalog/enrich/${rowId}`, {
+      method: "POST",
+    }),
 };

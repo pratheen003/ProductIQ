@@ -196,3 +196,149 @@ export interface ReviewResolutionResponse {
   resolved_value: any;
   message: string;
 }
+
+// -------------------------------------------------------------
+// Catalog Intelligence (Unilog Pivot) Types
+// -------------------------------------------------------------
+
+export type CatalogTrustStatusType = "Verified" | "Inferred" | "Conflicted" | "Unknown";
+
+export interface CatalogFieldDTO<T = any> {
+  value: T | null;
+  status: CatalogTrustStatusType;
+  confidence: number;
+  sources: string[];
+  reason: string;
+}
+
+export interface CatalogAttributeTripleDTO {
+  label: string;
+  value: any;
+  uom: string | null;
+  raw_value: string | null;
+  raw_uom: string | null;
+  status: CatalogTrustStatusType;
+  confidence: number;
+  reason: string;
+}
+
+export interface CatalogProductDTO {
+  row_id: number;
+  mfg_part_num: string;
+  part_desc: string | null;
+  raw_input: {
+    row_id: number;
+    mfg_part_num: string;
+    part_desc: string | null;
+    e1_brand: string | null;
+    unilog_brand: string | null;
+    dib_brand: string | null;
+    part_manuf: string | null;
+  };
+  manufacturer_name: CatalogFieldDTO<string>;
+  brand_name: CatalogFieldDTO<string>;
+  trade_name: CatalogFieldDTO<string>;
+  manufacturer_part_number: CatalogFieldDTO<string>;
+  product_name: CatalogFieldDTO<string>;
+  series: CatalogFieldDTO<string>;
+  classpath: CatalogFieldDTO<string>;
+  attributes: CatalogAttributeTripleDTO[];
+  short_desc: CatalogFieldDTO<string>;
+  long_desc: CatalogFieldDTO<string>;
+  overall_trust_status: CatalogTrustStatusType;
+  overall_confidence: number;
+  has_conflicts: boolean;
+  unresolved_conflicts: Array<{
+    field: string;
+    sources: string[];
+    reason: string;
+  }>;
+}
+
+export interface CatalogProductSummaryDTO {
+  row_id: number;
+  mfg_part_num: string;
+  part_desc: string | null;
+  manufacturer: string | null;
+  brand: string | null;
+  overall_status: CatalogTrustStatusType;
+  confidence: number;
+  has_conflicts: boolean;
+}
+
+export interface CatalogProductsListResponse {
+  total: number;
+  page: number;
+  page_size: number;
+  total_pages: number;
+  items: CatalogProductSummaryDTO[];
+}
+
+export interface CatalogExactMatchFieldComparison {
+  field_name: string;
+  pipeline_value: string | null;
+  expected_value: string | null;
+  is_exact_match: boolean;
+  status_tier: string;
+  confidence: number;
+}
+
+export interface CatalogExactMatchRow {
+  row_id: number;
+  mfg_part_num: string;
+  fields_compared: number;
+  fields_matched: number;
+  row_accuracy_pct: number;
+  field_comparisons: CatalogExactMatchFieldComparison[];
+}
+
+export interface CatalogExactMatchEvalDTO {
+  evaluation_name: string;
+  metric_label: string;
+  sample_size_n: number;
+  sample_size_label: string;
+  total_fields_compared: number;
+  total_fields_matched: number;
+  overall_exact_match_rate_pct: number;
+  summary_statement: string;
+  disclaimer: string;
+  rows: CatalogExactMatchRow[];
+}
+
+export interface CatalogStatusDistributionBreakdown {
+  verified_count: number;
+  inferred_count: number;
+  conflicted_count: number;
+  unknown_count: number;
+  verified_pct: number;
+  inferred_pct: number;
+  conflicted_pct: number;
+  unknown_pct: number;
+}
+
+export interface CatalogComplianceEvalDTO {
+  evaluation_name: string;
+  total_input_rows: number;
+  description: string;
+  lov_compliance_rate_pct: number;
+  lov_compliance_note: string;
+  total_conflicts_detected: number;
+  conflict_detection_rate_pct: number;
+  conflict_examples: Array<{
+    row_id: number;
+    mfg_part_num: string;
+    part_desc: string | null;
+    reason: string;
+    sources: string[];
+  }>;
+  total_placeholders_filtered: number;
+  rows_with_placeholders_filtered: number;
+  placeholder_filtering_rate_pct: number;
+  manufacturer_status_distribution: CatalogStatusDistributionBreakdown;
+  brand_status_distribution: CatalogStatusDistributionBreakdown;
+  overall_status_distribution: CatalogStatusDistributionBreakdown;
+  total_duration_ms: number;
+  throughput_rows_per_second: number;
+  avg_latency_ms_per_row: number;
+}
+

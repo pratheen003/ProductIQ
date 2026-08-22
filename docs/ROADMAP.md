@@ -80,14 +80,11 @@ RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VAL
 
 ---
 
-### Phase 7 — Human-in-the-Loop Review Queue
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Enable domain engineers to review `Conflicted` fields, select canonical values with justification, and promote resolved fields to `Verified`.
-- **Expected Output:** Review queue workflow and audit trail.
+### Parallel Workstream — Unilog Catalog Pivot (Prompts 1–3)
+- **Status:** `COMPLETE` ✅
+- **Objective:** Process Unilog's real 1,000-row hackathon catalog dataset with strict no-fabrication discipline and a Dual-Mechanism Evaluation Strategy:
+  - **Prompt 1 (Foundation):** Canonical schema, ground-truth-sourced lookups (2 manufacturer/brand mappings, 4 UOM units, 63 decimal-fraction conversions), 1,000-row input loader.
+  - **Prompt 2 (Enrichment & Dual Eval):** Manufacturer canonicalization, UOM normalization, Mechanism A (Gold Standard n=2) + Mechanism B (Rule Compliance n=1,000).
+  - **Prompt 3 (Batch Scale & UI):** 1,000-row persisted batch run (`data/catalog/processed/`), Next.js UI integration (`/catalog/*`), corrected Mechanism A framing, deck export (`docs/DECK_NUMBERS.md`).
+- **Outputs:** `productiq_catalog/`, `data/catalog/processed/`, `scripts/run_catalog_batch.py`, `scripts/export_deck_numbers.py`, `docs/CATALOG_PIVOT.md`, `docs/DECK_NUMBERS.md`.
 
----
-
-### Phase 8 — Batch Intelligence & Analytics
-- **Status:** `NOT STARTED` ⏳
-- **Objective:** Catalog-wide analytics, efficiency trend benchmarking across power classes, cross-manufacturer comparisons, and data completeness heatmaps.
-- **Expected Output:** Batch analytics engine and export utilities.

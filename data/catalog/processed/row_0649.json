@@ -1,0 +1,94 @@
+{
+  "row_id": 649,
+  "mfg_part_num": "CHP90301TBB",
+  "part_desc": "CHP90301TBB Café Cooktop Bk",
+  "raw_input": {
+    "row_id": 649,
+    "mfg_part_num": "CHP90301TBB",
+    "part_desc": "CHP90301TBB Café Cooktop Bk",
+    "e1_brand": null,
+    "unilog_brand": null,
+    "dib_brand": null,
+    "part_manuf": "Appliance Dealers Cooperative (APPDE)"
+  },
+  "manufacturer_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='Appliance Dealers Cooperative (APPDE)'",
+      "Mfg_Part_Num='CHP90301TBB'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "brand_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='Appliance Dealers Cooperative (APPDE)'",
+      "Mfg_Part_Num='CHP90301TBB'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "trade_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": "Unknown: No verified trade name available."
+  },
+  "manufacturer_part_number": {
+    "value": "CHP90301TBB",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='CHP90301TBB'"
+    ],
+    "reason": "Primary manufacturer part number from input."
+  },
+  "product_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Desc='CHP90301TBB Café Cooktop Bk'"
+    ],
+    "reason": "Unknown product category name."
+  },
+  "series": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "classpath": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "attributes": [],
+  "short_desc": {
+    "value": "CHP90301TBB",
+    "status": "Inferred",
+    "confidence": 0.8,
+    "sources": [
+      "Formula: [Brand] [Part#] [Product Name]"
+    ],
+    "reason": "Synthesized according to standard catalog formatting rules."
+  },
+  "long_desc": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "overall_trust_status": "Unknown",
+  "overall_confidence": 0.0,
+  "has_conflicts": false,
+  "unresolved_conflicts": []
+}

@@ -1,0 +1,103 @@
+{
+  "row_id": 395,
+  "mfg_part_num": "34688A",
+  "part_desc": "34688A Kichler Chandelier Lt",
+  "raw_input": {
+    "row_id": 395,
+    "mfg_part_num": "34688A",
+    "part_desc": "34688A Kichler Chandelier Lt",
+    "e1_brand": null,
+    "unilog_brand": null,
+    "dib_brand": null,
+    "part_manuf": null
+  },
+  "manufacturer_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Mfg_Part_Num='34688A'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "brand_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Mfg_Part_Num='34688A'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "trade_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": "Unknown: No verified trade name available."
+  },
+  "manufacturer_part_number": {
+    "value": "34688A",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='34688A'"
+    ],
+    "reason": "Primary manufacturer part number from input."
+  },
+  "product_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Desc='34688A Kichler Chandelier Lt'"
+    ],
+    "reason": "Unknown product category name."
+  },
+  "series": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "classpath": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "attributes": [
+    {
+      "label": "Amperage Rating",
+      "value": 34688.0,
+      "uom": "A",
+      "raw_value": "34688",
+      "raw_uom": "A",
+      "status": "Verified",
+      "confidence": 1.0,
+      "reason": "Verified canonical unit 'A' with verified numeric value."
+    }
+  ],
+  "short_desc": {
+    "value": "34688A",
+    "status": "Inferred",
+    "confidence": 0.8,
+    "sources": [
+      "Formula: [Brand] [Part#] [Product Name]"
+    ],
+    "reason": "Synthesized according to standard catalog formatting rules."
+  },
+  "long_desc": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "overall_trust_status": "Unknown",
+  "overall_confidence": 0.0,
+  "has_conflicts": false,
+  "unresolved_conflicts": []
+}

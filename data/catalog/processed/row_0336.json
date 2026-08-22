@@ -1,0 +1,107 @@
+{
+  "row_id": 336,
+  "mfg_part_num": "25822",
+  "part_desc": "3/8\" 12\"x16' Smart Vented Soff - Cedar Soffit",
+  "raw_input": {
+    "row_id": 336,
+    "mfg_part_num": "25822",
+    "part_desc": "3/8\" 12\"x16' Smart Vented Soff - Cedar Soffit",
+    "e1_brand": "LP SMARTSIDE",
+    "unilog_brand": null,
+    "dib_brand": null,
+    "part_manuf": "U S Lumber (3073)"
+  },
+  "manufacturer_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='U S Lumber (3073)'",
+      "E1_Brand='LP SMARTSIDE'",
+      "Mfg_Part_Num='25822'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "brand_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='U S Lumber (3073)'",
+      "E1_Brand='LP SMARTSIDE'",
+      "Mfg_Part_Num='25822'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "trade_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": "Unknown: No verified trade name available."
+  },
+  "manufacturer_part_number": {
+    "value": "25822",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='25822'"
+    ],
+    "reason": "Primary manufacturer part number from input."
+  },
+  "product_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Desc='3/8\" 12\"x16' Smart Vented Soff - Cedar Soffit'"
+    ],
+    "reason": "Unknown product category name."
+  },
+  "series": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "classpath": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "attributes": [
+    {
+      "label": "Dimension / Size",
+      "value": 12.0,
+      "uom": "in",
+      "raw_value": "12",
+      "raw_uom": "\"",
+      "status": "Inferred",
+      "confidence": 0.9,
+      "reason": "Normalized from raw '12\"' using verified alias/fraction lookup."
+    }
+  ],
+  "short_desc": {
+    "value": "25822",
+    "status": "Inferred",
+    "confidence": 0.8,
+    "sources": [
+      "Formula: [Brand] [Part#] [Product Name]"
+    ],
+    "reason": "Synthesized according to standard catalog formatting rules."
+  },
+  "long_desc": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "overall_trust_status": "Inferred",
+  "overall_confidence": 0.85,
+  "has_conflicts": false,
+  "unresolved_conflicts": []
+}

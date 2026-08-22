@@ -1,0 +1,94 @@
+{
+  "row_id": 893,
+  "mfg_part_num": "577728",
+  "part_desc": "577728 Festool Cordless Sander - ETSC 2 150 I-Plus",
+  "raw_input": {
+    "row_id": 893,
+    "mfg_part_num": "577728",
+    "part_desc": "577728 Festool Cordless Sander - ETSC 2 150 I-Plus",
+    "e1_brand": null,
+    "unilog_brand": null,
+    "dib_brand": null,
+    "part_manuf": "Festool USA (FESTO)"
+  },
+  "manufacturer_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='Festool USA (FESTO)'",
+      "Mfg_Part_Num='577728'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "brand_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Manuf='Festool USA (FESTO)'",
+      "Mfg_Part_Num='577728'"
+    ],
+    "reason": "Unknown: Supplier/brand not present in verified master lookup table. Value suppressed to prevent data fabrication."
+  },
+  "trade_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": "Unknown: No verified trade name available."
+  },
+  "manufacturer_part_number": {
+    "value": "577728",
+    "status": "Verified",
+    "confidence": 1.0,
+    "sources": [
+      "Mfg_Part_Num='577728'"
+    ],
+    "reason": "Primary manufacturer part number from input."
+  },
+  "product_name": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [
+      "Part_Desc='577728 Festool Cordless Sander - ETSC 2 150 I-Plus'"
+    ],
+    "reason": "Unknown product category name."
+  },
+  "series": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "classpath": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "attributes": [],
+  "short_desc": {
+    "value": "577728",
+    "status": "Inferred",
+    "confidence": 0.8,
+    "sources": [
+      "Formula: [Brand] [Part#] [Product Name]"
+    ],
+    "reason": "Synthesized according to standard catalog formatting rules."
+  },
+  "long_desc": {
+    "value": null,
+    "status": "Unknown",
+    "confidence": 0.0,
+    "sources": [],
+    "reason": ""
+  },
+  "overall_trust_status": "Unknown",
+  "overall_confidence": 0.0,
+  "has_conflicts": false,
+  "unresolved_conflicts": []
+}

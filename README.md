@@ -7,13 +7,16 @@
 [![Phase 4: Enrichment](https://img.shields.io/badge/Phase%204-Complete-brightgreen.svg)](#phase-status)
 [![Phase 5: Trust Intelligence](https://img.shields.io/badge/Phase%205-Complete-brightgreen.svg)](#phase-status)
 [![Phase 6: Frontend UI](https://img.shields.io/badge/Phase%206-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-Phase%206%20Verified-success.svg)](#running-tests)
+[![Catalog Pivot: Prompts 1-3](https://img.shields.io/badge/Catalog%20Pivot-Complete-brightgreen.svg)](docs/CATALOG_PIVOT.md)
+[![Tests](https://img.shields.io/badge/Tests-726%20Passed-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
 [![Next.js](https://img.shields.io/badge/Next.js-14%20(App%20Router)-black.svg)](#frontend-ui)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
 
-> **Note:** For details on the parallel Unilog General Industrial Catalog pipeline workstream, see [`docs/CATALOG_PIVOT.md`](docs/CATALOG_PIVOT.md).
+> **Dual Pipeline Architecture:**
+> 1. **Industrial Electric Motors (`productiq/`):** Full 6-phase multimodal PDF extraction, physics validation, LLM enrichment, and human review resolution.
+> 2. **Unilog Catalog Dataset (`productiq_catalog/`):** 1,000-row batch normalization, 63-entry decimal-fraction engine, 39.2% cross-column conflict detection, and Dual-Mechanism Evaluation (Mechanism A: 100% fidelity on gold-standard n=2; Mechanism B: 100% vocabulary compliance on n=1,000). See [`docs/CATALOG_PIVOT.md`](docs/CATALOG_PIVOT.md) and [`docs/DECK_NUMBERS.md`](docs/DECK_NUMBERS.md).
 
 ---
 

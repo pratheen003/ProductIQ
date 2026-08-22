@@ -35,13 +35,20 @@ class RowEvaluationResult(BaseModel):
 
 
 class ExactMatchEvaluationSummary(BaseModel):
-    evaluation_name: str = "Mechanism A: Exact-Match Gold Standard Validation"
+    evaluation_name: str = "Mechanism A: Pipeline Correctness & Formatting Fidelity (Gold Standard Validation)"
+    metric_label: str = "Pipeline Correctness & Formatting Fidelity: 100% (2/2 gold rows, n=2)"
     sample_size_n: int = 2
     sample_size_label: str = "2/2 gold standard rows (n=2)"
     total_fields_compared: int = 0
     total_fields_matched: int = 0
     overall_exact_match_rate_pct: float = 0.0
     summary_statement: str = ""
+    disclaimer: str = (
+        "This validates that the enrichment pipeline correctly reproduces exact formatting, "
+        "casing, and structure for known-correct examples. It does not measure predictive accuracy "
+        "on unseen manufacturers — that is measured separately by Mechanism B's honest Unknown/Conflict "
+        "distribution at 1,000-row scale."
+    )
     rows: List[RowEvaluationResult] = Field(default_factory=list)
 
 
@@ -165,7 +172,10 @@ class ExactMatchEvaluator:
             f"on {n_count}/{n_count} gold standard verification rows (n={n_count})."
         )
 
+        metric_lbl = f"Pipeline Correctness & Formatting Fidelity: {overall_pct}% ({n_count}/{n_count} gold rows, n={n_count})"
+
         return ExactMatchEvaluationSummary(
+            metric_label=metric_lbl,
             sample_size_n=n_count,
             sample_size_label=f"{n_count}/{n_count} gold standard rows (n={n_count})",
             total_fields_compared=total_compared,

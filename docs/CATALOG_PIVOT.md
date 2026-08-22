@@ -95,10 +95,11 @@ Strictly derived from the ground truth delivery format file (`Unihack__Expected_
 
 Given the data-access constraint (only 2 verified gold-standard ground-truth rows were available in the delivery format file, not the full 200 described in the brief), evaluation is split into two independent, honestly-scoped mechanisms:
 
-### Mechanism A: Exact-Match Validation on Gold Standard Rows (n=2)
+### Mechanism A: Pipeline Correctness & Formatting Fidelity (n=2 Gold Standard Rows)
 - **Scope:** Evaluates pipeline construction logic field-by-field against the 2 verified gold-standard rows (`PDSH4816AF` and `WDTS7024RZ`).
-- **Metric:** **100.0% exact field match (10/10 fields across 2/2 rows, n=2)**.
-- **Role:** Proves that where ground truth exists, the extraction, canonicalization, UOM conversion, and description synthesis formulas produce exact matches against Unilog's expected output.
+- **Metric:** **Pipeline Correctness & Formatting Fidelity: 100.0% (2/2 gold rows, n=2)**.
+- **Explicit Invariant & Disclaimer:**
+  > *"This validates that the enrichment pipeline correctly reproduces exact formatting, casing, and structure for known-correct examples. It does not measure predictive accuracy on unseen manufacturers — that is measured separately by Mechanism B's honest Unknown/Conflict distribution at 1,000-row scale."*
 
 ### Mechanism B: Rule-Compliance & Vocabulary Metrics at Scale (n=1,000)
 - **Scope:** Evaluates all 1,000 raw input rows for internal consistency, conflict detection, placeholder suppression, and vocabulary discipline without needing unseen ground truth.
@@ -106,13 +107,22 @@ Given the data-access constraint (only 2 verified gold-standard ground-truth row
   - **LOV / Lookup Compliance Rate:** **100.0%** (100% of populated fields map to verified lookup entries; unverified values are labeled `Unknown`; 0% invented).
   - **Conflict Detection Rate:** **39.2%** (392 genuine cross-column brand conflicts surfaced, e.g. `TREX` vs `Boise Cascade`, `DEWALT` vs `Black & Decker`).
   - **Placeholder Filtering Rate:** **100.0%** (all 1,000 rows filtered of noisy tokens like `-- Unbranded --`, `-- No DIB Brand --`, `-`).
-  - **Throughput:** **10,045+ rows/second** (<100 ms total for 1,000 items).
+  - **Throughput:** **8,800+ rows/second** (<120 ms total for 1,000 items).
 
 > **Why Both Mechanisms Matter:** Neither substitutes for the other. Mechanism A proves construction correctness where gold-standard answers exist (even on a small n=2 sample), while Mechanism B proves at 1,000-row volume that the pipeline behaves consistently, flags uncertainty honestly, and never fabricates values. Together they demonstrate correctness-where-provable and honesty-at-scale.
 
 ---
 
-## 7. Live FastAPI Endpoints
+## 7. Batch Scale & Persistence (`data/catalog/processed/`)
+
+All 1,000 input rows are enriched and persisted to disk:
+- `data/catalog/processed/row_0001.json` through `data/catalog/processed/row_1000.json` (1,000 individual JSON records).
+- `data/catalog/processed/batch_catalog_report.json` (consolidated batch summary and metrics).
+- Zero dropped records (1,000/1,000 successfully processed).
+
+---
+
+## 8. Live FastAPI Catalog Endpoints
 
 | Endpoint | Method | Purpose |
 |---|:---:|---|
@@ -122,7 +132,23 @@ Given the data-access constraint (only 2 verified gold-standard ground-truth row
 | `/api/catalog/lookups/fractions` | `GET` | Query the 63 decimal-fraction entries or convert fraction string. |
 | `/api/catalog/input/{row_id}` | `GET` | Retrieve raw row (1..1000) from sample dataset. |
 | `/api/catalog/ground-truth/{row_id}` | `GET` | Retrieve benchmark ground truth record. |
-| `/api/catalog/enrich/{row_id}` | `POST` | Execute full catalog enrichment pipeline on a single input row. |
+| `/api/catalog/enrich/{row_id}` | `POST` | Execute live catalog enrichment pipeline on a single input row. |
+| `/api/catalog/products` | `GET` | Paginated product explorer (1,000 items) with search and status filters. |
+| `/api/catalog/products/{row_id}` | `GET` | Detailed product view with attribute triples and conflict reasoning. |
+| `/api/catalog/batch/summary` | `GET` | Retrieve batch processing summary and status distributions. |
 | `/api/catalog/eval/exact-match` | `GET` | Retrieve Mechanism A Exact-Match Evaluation results (explicitly n=2). |
 | `/api/catalog/eval/compliance` | `GET` | Retrieve Mechanism B 1,000-Row Compliance & Vocabulary Metrics. |
+
+---
+
+## 9. Next.js Frontend Catalog Routes
+
+| Route | Purpose |
+|---|---|
+| `/catalog` | Catalog Batch Dashboard with Mechanism B metrics, charts, and throughput. |
+| `/catalog/products` | 1,000 Items Explorer table with search, pagination, and trust badges. |
+| `/catalog/products/[id]` | Catalog Product Detail with raw vs enriched comparison, attribute triples, and live re-enrich. |
+| `/catalog/gold-standard` | Gold Standard View (n=2) showing exact-match delivery verification with corrected framing. |
+| `/catalog/eval` | Full Mechanism B compliance and status distribution evaluation dashboard. |
+
 

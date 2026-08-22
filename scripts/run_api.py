@@ -5,6 +5,7 @@ ProductIQ API Server Runner — Phase 6
 Starts the Uvicorn ASGI server hosting the ProductIQ REST API on http://127.0.0.1:8000.
 """
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -19,8 +20,13 @@ from productiq.config import load_config
 
 def main():
     parser = argparse.ArgumentParser(description="Start ProductIQ FastAPI Backend Service")
-    parser.add_argument("--host", type=str, default="127.0.0.1", help="Host address (default: 127.0.0.1)")
-    parser.add_argument("--port", type=int, default=8000, help="Port number (default: 8000)")
+    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host address")
+    parser.add_argument(
+	    "--port", 
+	    type=int, 
+	    default=int(os.environ.get("PORT", 8000)),
+    	help="Port number",
+    )
     parser.add_argument("--reload", action="store_true", help="Enable auto-reload for development")
     args = parser.parse_args()
 

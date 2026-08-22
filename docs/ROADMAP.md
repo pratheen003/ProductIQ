@@ -1,90 +1,46 @@
-# ProductIQ Pipeline Roadmap
+# ProductIQ — Engineering Roadmap & Milestone Status
+## Final Project Freeze — Submission & Demonstration Phase
 
-**Overall Pipeline:**
-```
-RAW SOURCES ──► EXTRACTION (P1) ──► NORMALIZATION (P2) ──► VALIDATION (P3) ──► ENRICHMENT (P4)
-            ──► TRUST SCORING (P5) ──► UI DASHBOARD (P6) ──► REVIEW QUEUE (P7) ──► BATCH AI (P8)
-```
+> **Project Milestone Status:** `ENGINEERING COMPLETE & FROZEN` ✅
+> All product features, dual pipelines, mathematical validation engines, scoring algorithms, and export utilities are complete. The project is now frozen for demonstration, pitch packaging, and deployment.
 
 ---
 
-## Roadmap Phases
+## 1. Completed Engineering Phases
 
-### Phase 0 — Foundation & Canonical Schema
-- **Status:** `COMPLETE` ✅
-- **Objective:** Establish the strongly-typed canonical data model, provenance primitives, status tiering, dataset manifest, and configuration infrastructure.
-- **Outputs:** `productiq/schema/motor.py`, `MotorProduct`, `DataStatus`, `FieldValue`, `SourceEntry`, `CANONICAL_UNITS`, `scripts/verify_phase0.py`.
+### Track A: Industrial Electric Motor Intelligence (`productiq/`)
+- [x] **Phase 0 — Foundation & Schema:** Canonical motor schema, status enums (`Verified`, `Inferred`, `Conflicted`, `Unknown`), SI canonical units, configuration infrastructure. *(11/11 checks passed)*
+- [x] **Phase 1 — Multi-Source Extraction Layer:** Multimodal PDF table/text parsing, CSV catalog ingestion, Web page parsing with atomic `EvidenceRecord` preservation. *(11/11 checks passed)*
+- [x] **Phase 2 — Unit Normalization & Mapping:** Deterministic unit conversions (HP $\to$ kW, lb $\to$ kg), non-standard string handling, and attribute mapping preserving raw evidence. *(13/13 checks passed)*
+- [x] **Phase 3 — Engineering Validation & Rules Engine:** Deterministic electromechanical physics rules ($T = \frac{P \times 1000 \times 60}{2\pi \times N}$, slip, IEC 60034 IE3 class), and known conflict detection (PDF 2.34 A vs CSV 7.22 A). *(16/16 checks passed)*
+- [x] **Phase 4 — Grounded AI Enrichment (Groq/OpenAI):** Multi-provider LLM abstraction, structured JSON schema, commercial descriptions, application suggestions, anti-hallucination claim segregation. *(18/18 checks passed)*
+- [x] **Phase 5 — Trust-Aware Product Intelligence:** Mathematical trust formula ($S = 0.35 C + 0.35 V + 0.30 D - P$), publishability gating (`PUBLISHABLE`, `REVIEW_REQUIRED`), structured review queue generation. *(20/20 checks passed)*
+- [x] **Phase 6 — Product Intelligence UI & Presentation Layer:** Next.js 14 frontend, FastAPI service bridge, interactive dashboard, product detail, physics gauge, side-by-side conflict comparator, review resolution modal. *(20/20 checks passed)*
 
----
-
-### Phase 1 — Multi-Source Extraction Layer
-- **Status:** `COMPLETE` ✅
-- **Objective:** Extract raw observations from PDFs, CSV catalogs, and Web pages into atomic `EvidenceRecord` objects while preserving exact locations and context without semantic distortion.
-- **Outputs:** `PDFExtractor`, `CSVExtractor`, `WebExtractor`, `EvidenceRecord`, `data/processed/<product_id>/*.json`, `scripts/run_extraction.py`, `scripts/verify_phase1.py`.
-
----
-
-### Phase 2 — Unit Normalization & Mapping
-- **Status:** `COMPLETE` ✅
-- **Objective:** Convert heterogeneous extracted units (e.g. `HP` to `kW`, `lb` to `kg`, non-standard frequency strings) into SI canonical units defined in `CANONICAL_UNITS` while maintaining original raw values in `EvidenceRef`.
-- **Outputs:** `MotorNormalizer`, `BatchNormalizer`, `unit_converter.py`, `value_parser.py`, `attribute_mapper.py`, `models.py`, `scripts/run_normalization.py`, `scripts/verify_phase2.py`, `data/processed/<product_id>/normalized_product.json`.
+### Track B: Unilog Catalog Intelligence (`productiq_catalog/`)
+- [x] **Catalog Prompt 1 — Foundation:** 1,000-row catalog input loader, ground-truth-derived lookup architecture (2 manufacturer/brand pairs, 4 UOM units, 63 decimal fractions), strict no-fabrication boundary. *(17/17 tests passed)*
+- [x] **Catalog Prompt 2 — Enrichment & Dual Evaluation:** Manufacturer canonicalization, UOM standards conversion, 39.2% cross-column brand conflict detection, Dual-Mechanism Evaluation (Mechanism A: Gold Proof $n=2$, Mechanism B: Scale Governance $n=1,000$). *(12/12 tests passed)*
+- [x] **Catalog Prompt 3 — Batch Scale, UI & Packaging:** 1,000-row batch persistence (`data/catalog/processed/`), Catalog UI (`/catalog`, `/catalog/products`, `/catalog/gold-standard`, `/catalog/eval`), corrected Mechanism A framing & disclaimer, live deck export script. *(9/9 tests passed)*
+- [x] **Exact-Header Delivery Format Exporter (Critical Submission Correction):** Exact 252-column schema match (`Unihack Expected Output`), native `.xlsx` and `.csv` generation, genuinely blank unpopulated cells, API & UI download integration. *(6/6 tests passed)*
 
 ---
 
-### Phase 3 — Engineering Validation & Rules Engine
-- **Status:** `COMPLETE` ✅
-- **Objective:** Apply deterministic, explainable electromechanical engineering rules and cross-source consistency checks:
-  - Canonical unit conformance (`SCHEMA_CANONICAL_UNITS`) and schema version guarding.
-  - Required and important field completeness checks (`REQUIRED_FIELD_PRESENCE`, `IMPORTANT_FIELD_PRESENCE`).
-  - Strict range and physical plausibility validation (positive power, voltage, speed, current, weight; efficiency ∈ [0, 100]%, PF ∈ [0, 1]).
-  - Cross-source conflict surfacing with dual-evidence provenance preserved.
-  - Engineering checks: Torque-Power-Speed mechanical relationship ($T = \frac{P \times 1000 \times 60}{2\pi \times N}$), synchronous speed / slip ($n_{\text{rated}} < n_s$), and IE3 class efficiency plausibility.
-  - Specific conflict detection: PDF 2.34 A vs CSV 7.22 A (`CONFLICT_RATED_CURRENT_PDF_VS_CSV`), identifying likely torque/current mislabeling without picking a winner.
-- **Outputs:** `productiq/validation/models.py`, `productiq/validation/rules.py`, `productiq/validation/validator.py`, `data/processed/<product_id>/validation_report.json`, `data/processed/batch_validation_report.json`, `scripts/run_validation.py`, `scripts/verify_phase3.py`.
+## 2. Current Active Phase: Submission & Presentation Phase
+
+The following non-feature activities are executed post-freeze:
+- [ ] **Cloud Deployment:** Provision backend on container platform and frontend on Next.js edge runtime (see [`docs/DEPLOYMENT.md`](DEPLOYMENT.md)).
+- [ ] **Deployed Application Verification:** Verify live API health and interactive catalog download on deployed environment.
+- [ ] **Demo Video Recording:** Record 3-minute judge walkthrough following [`docs/DEMO_GUIDE.md`](DEMO_GUIDE.md).
+- [ ] **Pitch Deck Finalization:** Finalize pitch slides using verified figures from [`docs/DECK_NUMBERS.md`](DECK_NUMBERS.md).
+- [ ] **Official Hackathon Form Submission:** Submit GitHub repository, live app URL, video link, and generated delivery format file.
 
 ---
 
-### Phase 4 — Grounded AI Enrichment (Groq Provider)
-- **Status:** `COMPLETE` ✅
-- **Objective:** Utilize grounded LLM reasoning via Groq / OpenAI provider abstraction to generate structured commercial intelligence from validated data:
-  - Commercial synthesis and technical descriptions grounded strictly in verified specifications.
-  - Recommended target industrial applications (pumps, fans, conveyors, compressors) and search keywords.
-  - Inferred parameter completion (frequency, poles) strictly marked with `DataStatus.INFERRED` and LLM provenance.
-  - Anti-hallucination contract enforcing clear separation between `source_backed_claims` and `inferred_claims`.
-  - Unresolved conflict preservation ensuring multi-source discrepancies are highlighted with warnings rather than silently picked winners.
-- **Outputs:** `productiq/enrichment/models.py`, `productiq/enrichment/prompts.py`, `productiq/enrichment/service.py`, `data/processed/<product_id>/enrichment.json`, `data/processed/batch_enrichment_report.json`, `scripts/run_enrichment.py`, `scripts/verify_phase4.py`.
+## 3. Future Roadmap (Post-Hackathon Enterprise Scope)
 
----
-
-### Phase 5 — Trust-Aware Product Intelligence
-- **Status:** `COMPLETE` ✅
-- **Objective:** Apply deterministic trust analysis over normalized attributes, validation findings, and AI enrichment claims:
-  - Independent attribute-level trust derivation from Phase 2/3 outputs (never blindly copied from LLM confidence).
-  - Validation-aware claim trust classification (`SOURCE_BACKED`, `INFERRED`, `CONFLICTED`).
-  - Strict preservation of multi-source conflicts (e.g. PDF 2.34 A vs CSV 7.22 A gated with `REVIEW_REQUIRED`).
-  - Structured review queue generation with explicit WHAT, WHY, EVIDENCE, and RECOMMENDED ACTION.
-  - Transparent mathematical trust scoring with rendered formulas ($S = 0.35 C + 0.35 V + 0.30 D - P$).
-  - Commercial publishability categorization (`PUBLISHABLE`, `PUBLISHABLE_WITH_WARNING`, `REVIEW_REQUIRED`, `NOT_PUBLISHABLE`).
-- **Outputs:** `productiq/trust/models.py`, `productiq/trust/evaluator.py`, `productiq/trust/service.py`, `data/processed/<product_id>/trust_report.json`, `data/processed/batch_trust_report.json`, `scripts/run_trust.py`, `scripts/verify_phase5.py`.
-
----
-
-### Phase 6 — Product Intelligence UI & Presentation Layer
-- **Status:** `COMPLETE` ✅
-- **Objective:** Provide a web-based, human-inspectable dashboard displaying motor specifications, color-coded status badges (`Verified`/`Inferred`/`Conflicted`/`Unknown`), provenance inspector, and side-by-side conflict comparisons:
-  - High-performance FastAPI backend service bridge (`productiq/api/`).
-  - Next.js (App Router), TypeScript, Tailwind CSS, Lucide icons, and Recharts frontend.
-  - Interactive Dashboard (`/`), Catalog (`/products`), Detail Inspector (`/products/[id]`), Batch Analytics (`/batch`), Review Queue (`/reviews`), and Ingestion Engine (`/ingest`).
-  - Brand styling (`#4D3A4D`, `#BE5CA9`, `#D59CC5`, `#F8F6F8`) and IBM Plex Sans & Mono typography.
-- **Outputs:** `productiq/api/`, `frontend/`, `scripts/run_api.py`, `scripts/verify_phase6.py`, `docs/PHASE_6.md`.
-
----
-
-### Parallel Workstream — Unilog Catalog Pivot (Prompts 1–3)
-- **Status:** `COMPLETE` ✅
-- **Objective:** Process Unilog's real 1,000-row hackathon catalog dataset with strict no-fabrication discipline and a Dual-Mechanism Evaluation Strategy:
-  - **Prompt 1 (Foundation):** Canonical schema, ground-truth-sourced lookups (2 manufacturer/brand mappings, 4 UOM units, 63 decimal-fraction conversions), 1,000-row input loader.
-  - **Prompt 2 (Enrichment & Dual Eval):** Manufacturer canonicalization, UOM normalization, Mechanism A (Gold Standard n=2) + Mechanism B (Rule Compliance n=1,000).
-  - **Prompt 3 (Batch Scale & UI):** 1,000-row persisted batch run (`data/catalog/processed/`), Next.js UI integration (`/catalog/*`), corrected Mechanism A framing, deck export (`docs/DECK_NUMBERS.md`).
-- **Outputs:** `productiq_catalog/`, `data/catalog/processed/`, `scripts/run_catalog_batch.py`, `scripts/export_deck_numbers.py`, `docs/CATALOG_PIVOT.md`, `docs/DECK_NUMBERS.md`.
-
+The following items are long-term production enhancements outside the hackathon prototype scope:
+1. **Full Unilog Master Reference Integration:** Ingest Unilog's full 27,000+ manufacturer and complete UOM reference lists when enterprise-licensed files are provided.
+2. **Larger Benchmark Golden Dataset:** Expand Mechanism A exact-match validation against an enterprise-scale gold-standard dataset ($n \ge 5,000$).
+3. **Distributed Batch Queue Architecture:** Deploy Celery / Redis worker pools for multi-million row enterprise catalog migrations.
+4. **Multi-Tenant Role-Based Access:** Enterprise OAuth2 / SAML authentication with audit trails for distributed domain engineering teams.
+5. **Active Learning Feedback Loop:** Automatically promote resolved human review items into verified lookup aliases.

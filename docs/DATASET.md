@@ -112,13 +112,15 @@ In the schema, values extracted from this CSV must be labeled `status=Inferred` 
 
 ---
 
-## Phase 1 Dataset Expansion Recommendation
+## Track B: Unilog General Industrial Catalog Dataset (1,000 Items)
 
-For Phase 1, add motors from at least one additional manufacturer to enable cross-manufacturer conflict detection:
+- **Input File:** `data/catalog/input/Unihack__Sample_Dataset_-_Input.csv` (1,000 rows)
+- **Columns:** `Mfg_Part_Num`, `Part_Desc`, `E1_Brand`, `Unilog_Brand`, `DIB_Brand`, `Part_Manuf`
+- **Domain Scope:** Tools, abrasives, kitchen appliances, fasteners, building materials, plumbing.
+- **Ground Truth Benchmark:** `data/catalog/ground_truth/Unihack__Expected_Output_-_Delivery_Format.csv` (2 gold-standard records, 252 delivery headers).
+- **Lookup Tables:** Derived strictly from ground truth (`data/catalog/lookups/`):
+  - 2 verified manufacturer/brand mappings
+  - 4 canonical UOM units
+  - 63 decimal-fraction conversions
+- **Processed Artifacts:** `data/catalog/processed/` (1,000 JSON records, `batch_catalog_report.json`, `productiq_delivery_output.xlsx`, `productiq_delivery_output.csv`).
 
-**Recommended additions:**
-- ABB IE3 motors (M2BAX or M3BP series) — ABB publishes machine-readable catalogs
-- Siemens SIMOTICS General Purpose motors — Siemens provides downloadable datasheets
-- SEW-Eurodrive DR series — readily available PDFs
-
-This will create the first real-world conflict scenarios where, for example, two manufacturers measure efficiency under slightly different test conditions (IEC 60034-2-1 vs. older standards), exercising the `Conflicted` status path for the first time.

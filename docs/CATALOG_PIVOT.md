@@ -87,7 +87,7 @@ Strictly derived from the ground truth delivery format file (`Unihack__Expected_
 
 ## 5. Lookup Table Coverage Limitation
 
-> **Lookup Table Coverage Limitation:** The manufacturer/brand and UOM lookup tables in this build are derived exclusively from the 200-item ground truth file, not from Unilog's full master reference lists (which were not available in this submission). Coverage is therefore limited to manufacturers, brands, and units that happen to appear within those 200 rows. Any input row referencing a manufacturer or unit outside this coverage will correctly resolve to `Unknown` rather than a guessed value. This is a deliberate scope limitation, not a defect — it preserves the project's core no-fabrication principle under a real data-access constraint.
+> **Lookup Table Coverage Limitation:** The manufacturer/brand and UOM lookup tables in this build are derived exclusively from the available delivery-format ground-truth records (containing 2 verified gold-standard items), not from Unilog's full master reference lists (which were not available in this submission). Coverage is therefore limited to manufacturers, brands, and units that happen to appear within those records. Any input row referencing a manufacturer or unit outside this coverage will correctly resolve to `Unknown` rather than a guessed value. This is a deliberate scope limitation, not a defect — it preserves the project's core no-fabrication principle under a real data-access constraint.
 
 ---
 
@@ -107,7 +107,7 @@ Given the data-access constraint (only 2 verified gold-standard ground-truth row
   - **LOV / Lookup Compliance Rate:** **100.0%** (100% of populated fields map to verified lookup entries; unverified values are labeled `Unknown`; 0% invented).
   - **Conflict Detection Rate:** **39.2%** (392 genuine cross-column brand conflicts surfaced, e.g. `TREX` vs `Boise Cascade`, `DEWALT` vs `Black & Decker`).
   - **Placeholder Filtering Rate:** **100.0%** (all 1,000 rows filtered of noisy tokens like `-- Unbranded --`, `-- No DIB Brand --`, `-`).
-  - **Throughput:** **8,800+ rows/second** (<120 ms total for 1,000 items).
+  - **Throughput:** **9,434+ rows/second** (~106 ms total for 1,000 items).
 
 > **Why Both Mechanisms Matter:** Neither substitutes for the other. Mechanism A proves construction correctness where gold-standard answers exist (even on a small n=2 sample), while Mechanism B proves at 1,000-row volume that the pipeline behaves consistently, flags uncertainty honestly, and never fabricates values. Together they demonstrate correctness-where-provable and honesty-at-scale.
 
@@ -122,7 +122,18 @@ All 1,000 input rows are enriched and persisted to disk:
 
 ---
 
-## 8. Live FastAPI Catalog Endpoints
+## 8. Exact-Header Delivery Format Exporter (`productiq_catalog/export/`)
+
+Per the submission guidelines requiring output matching the expected format:
+- **Canonical Schema:** Programmatically matches all **252 header columns** of `Unihack__Expected_Output_-_Delivery_Format.csv` in exact character sequence.
+- **Generated Outputs:**
+  - `data/catalog/processed/productiq_delivery_output.xlsx` (604 KB native workbook with frozen headers).
+  - `data/catalog/processed/productiq_delivery_output.csv` (347 KB UTF-8 CSV).
+- **No-Fabrication Cell Discipline:** Unpopulated columns remain **genuinely empty cells** rather than fabricated placeholder strings.
+
+---
+
+## 9. Live FastAPI Catalog Endpoints
 
 | Endpoint | Method | Purpose |
 |---|:---:|---|
@@ -138,17 +149,19 @@ All 1,000 input rows are enriched and persisted to disk:
 | `/api/catalog/batch/summary` | `GET` | Retrieve batch processing summary and status distributions. |
 | `/api/catalog/eval/exact-match` | `GET` | Retrieve Mechanism A Exact-Match Evaluation results (explicitly n=2). |
 | `/api/catalog/eval/compliance` | `GET` | Retrieve Mechanism B 1,000-Row Compliance & Vocabulary Metrics. |
+| `/api/catalog/export/delivery-format` | `GET` | Download full 1,000-row delivery format (`.xlsx` or `.csv`). |
 
 ---
 
-## 9. Next.js Frontend Catalog Routes
+## 10. Next.js Frontend Catalog Routes
 
 | Route | Purpose |
 |---|---|
-| `/catalog` | Catalog Batch Dashboard with Mechanism B metrics, charts, and throughput. |
+| `/catalog` | Catalog Batch Dashboard with Mechanism B metrics, charts, throughput, and XLSX download. |
 | `/catalog/products` | 1,000 Items Explorer table with search, pagination, and trust badges. |
 | `/catalog/products/[id]` | Catalog Product Detail with raw vs enriched comparison, attribute triples, and live re-enrich. |
 | `/catalog/gold-standard` | Gold Standard View (n=2) showing exact-match delivery verification with corrected framing. |
 | `/catalog/eval` | Full Mechanism B compliance and status distribution evaluation dashboard. |
+
 
 

@@ -1,0 +1,46 @@
+{
+  "description": "ProductIQ Master Manufacturer and Brand Canonical Mapping Table (Strict Ground Truth Verified)",
+  "source": "Unihack__Expected_Output_-_Delivery_Format.csv",
+  "coverage_limitation": "Derived exclusively from ground truth. Input rows referencing manufacturers outside this coverage resolve to Unknown.",
+  "placeholders": [
+    "-- Unbranded --",
+    "-- No Unilog Brand --",
+    "-- No DIB Brand --",
+    "-",
+    "COMMODITY - UNBRANDED",
+    "None",
+    "null",
+    "N/A",
+    "NA"
+  ],
+  "mappings": [
+    {
+      "raw_signals": [
+        "PDSH4816AF",
+        "FRIGIDAIRE",
+        "Frigidaire"
+      ],
+      "canonical_manufacturer": "Rheem Manufacturing",
+      "canonical_brand": "FRIGIDAIRE\u00ae",
+      "trade_name": "",
+      "verified_from_ground_truth": true,
+      "ground_truth_part_numbers": [
+        "PDSH4816AF"
+      ]
+    },
+    {
+      "raw_signals": [
+        "WDTS7024RZ",
+        "Whirlpool",
+        "WHIRLPOOL"
+      ],
+      "canonical_manufacturer": "Whirlpool Corporation",
+      "canonical_brand": "Whirlpool\u00ae",
+      "trade_name": "",
+      "verified_from_ground_truth": true,
+      "ground_truth_part_numbers": [
+        "WDTS7024RZ"
+      ]
+    }
+  ]
+}

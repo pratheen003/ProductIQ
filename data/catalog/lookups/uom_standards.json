@@ -1,0 +1,20 @@
+{
+  "description": "ProductIQ UOM Standards Table (Strict Ground Truth Verified)",
+  "source": "Unihack__Expected_Output_-_Delivery_Format.csv",
+  "coverage_limitation": "Derived exclusively from ground truth. Input rows referencing units outside this coverage resolve to Unknown.",
+  "canonical_units": [
+    "A",
+    "V",
+    "dBA",
+    "in"
+  ],
+  "observable_alias_mappings": {
+    "IN": "in",
+    "in.": "in",
+    "\"": "in",
+    "V": "V",
+    "A": "A",
+    "dBA": "dBA",
+    "DBA": "dBA"
+  }
+}

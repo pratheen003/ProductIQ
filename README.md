@@ -6,10 +6,14 @@
 [![Phase 3: Validation](https://img.shields.io/badge/Phase%203-Complete-brightgreen.svg)](#phase-status)
 [![Phase 4: Enrichment](https://img.shields.io/badge/Phase%204-Complete-brightgreen.svg)](#phase-status)
 [![Phase 5: Trust Intelligence](https://img.shields.io/badge/Phase%205-Complete-brightgreen.svg)](#phase-status)
-[![Tests](https://img.shields.io/badge/Tests-Phase%205%20Verified-success.svg)](#running-tests)
+[![Phase 6: Frontend UI](https://img.shields.io/badge/Phase%206-Complete-brightgreen.svg)](#phase-status)
+[![Tests](https://img.shields.io/badge/Tests-Phase%206%20Verified-success.svg)](#running-tests)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#quick-start)
+[![Next.js](https://img.shields.io/badge/Next.js-14%20(App%20Router)-black.svg)](#frontend-ui)
 
 ProductIQ transforms fragmented, inconsistent industrial product data into structured, explainable, and audit-ready product intelligence.
+
+> **Note:** For details on the parallel Unilog General Industrial Catalog pipeline workstream, see [`docs/CATALOG_PIVOT.md`](docs/CATALOG_PIVOT.md).
 
 ---
 
@@ -287,21 +291,33 @@ ProductIq/
 │   │   ├── models.py
 │   │   ├── evaluator.py
 │   │   └── service.py
-│   ├── dashboard/                       # Phase 6+ stub (Not Started)
+│   ├── api/                             # Phase 6: FastAPI backend service bridge
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── service.py
+│   │   └── app.py
 │   ├── llm/                             # Multi-provider LLM API client wrapper (Groq + OpenAI)
 │   ├── config.py                        # Typed configuration loader
 │   └── logging_setup.py                 # Structured logging
+├── frontend/                            # Phase 6: Next.js 14 TypeScript Frontend
+│   ├── app/                             # Next.js App Router pages (Dashboard, Catalog, Detail, Batch, Reviews, Ingest)
+│   ├── components/                      # UI, Layout, and Recharts visualization components
+│   ├── lib/                             # Typed API client, TypeScript definitions, and utility helpers
+│   ├── package.json
+│   └── tailwind.config.ts
 ├── scripts/
 │   ├── run_extraction.py                # Batch extraction CLI runner
 │   ├── run_normalization.py             # Batch normalization CLI runner
 │   ├── run_validation.py                # Batch validation CLI runner
 │   ├── run_trust.py                     # Batch trust evaluation CLI runner
+│   ├── run_api.py                       # FastAPI server CLI runner (port 8000)
 │   ├── verify_phase0.py                 # Phase 0 audit script (11 checks)
 │   ├── verify_phase1.py                 # Phase 1 audit script (11 checks)
 │   ├── verify_phase2.py                 # Phase 2 audit script (13 checks)
 │   ├── verify_phase3.py                 # Phase 3 audit script (16 checks)
 │   ├── verify_phase4.py                 # Phase 4 audit script (18 checks)
-│   └── verify_phase5.py                 # Phase 5 audit script (20 checks)
+│   ├── verify_phase5.py                 # Phase 5 audit script (20 checks)
+│   └── verify_phase6.py                 # Phase 6 audit script (20 checks)
 ├── tests/                               # Unit & integration tests
 │   ├── test_schema.py
 │   ├── test_phase0.py
@@ -314,7 +330,19 @@ ProductIq/
 │   ├── test_phase2.py
 │   ├── test_phase3.py
 │   ├── test_phase4.py
-│   └── test_phase5.py
+│   ├── test_phase5.py
+│   └── test_api.py
+├── docs/                                # Technical phase documentation
+│   ├── PHASE_0.md
+│   ├── PHASE_1.md
+│   ├── PHASE_2.md
+│   ├── PHASE_3.md
+│   ├── PHASE_4.md
+│   ├── PHASE_5.md
+│   ├── PHASE_6.md
+│   ├── TRUST.md
+│   ├── ROADMAP.md
+│   └── DEVELOPMENT_LOG.md
 ├── .env.example                         # Environment template (no secrets)
 ├── .gitignore                           # Git ignore rules
 ├── README.md                            # Main project overview
@@ -327,11 +355,11 @@ ProductIq/
 ## 11. Known Limitations
 
 1. **WEG.net Anti-Bot Blocking:** Live HTTP requests to `weg.net` catalog URLs are blocked with HTTP 403 Forbidden. ProductIQ captures this failure state verbatim without hallucinating data.
-2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally surfaced as a conflict by Phase 2/3, preserved with warnings by Phase 4, and placed in the Phase 5 human Review Queue with `REVIEW_REQUIRED` publishability status without picking an arbitrary winner.
+2. **Preserved Raw Data Anomaly:** `data/csv/legacy_motors.csv` lists `full_load_current_a = 7.22` for the 1.1 kW motor, which is the torque value from the PDF brochure table. This is intentionally surfaced as a conflict by Phase 2/3, preserved with warnings by Phase 4, and placed in the Phase 5/6 human Review Queue with `REVIEW_REQUIRED` publishability status without picking an arbitrary winner.
 
 ---
 
 ## 12. Roadmap & Next Steps
 
 See [`docs/ROADMAP.md`](docs/ROADMAP.md) for full phase-by-phase objectives.  
-**Immediate Next Step:** **Phase 6 — Product Intelligence UI / Dashboard** (`productiq/dashboard/`) [NOT STARTED].
+**Immediate Next Step:** **Phase 7 — Advanced Human-in-the-Loop Audit Trails & Syndication** [NOT STARTED].

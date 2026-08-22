@@ -97,8 +97,8 @@ export default function CatalogDashboardPage() {
 
         <div className="flex flex-wrap items-center gap-3">
           <a
-            href="http://127.0.0.1:8000/api/catalog/export/delivery-format?format=xlsx"
-            download
+            href={api.getDeliveryExportUrl("xlsx")}
+            download="productiq_delivery_output.xlsx"
             className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow transition"
             title="Download full 1,000-row delivery format matching exact 252 headers"
           >

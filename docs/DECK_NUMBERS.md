@@ -11,7 +11,7 @@
 | **Mechanism B** | Approved Vocabulary / LOV Compliance | **100.0%** | n=1,000 input rows (0% invented values) |
 | **Mechanism B** | Cross-Column Brand Conflict Rate | **39.2%** (392 rows) | n=1,000 input rows (Disagreements flagged) |
 | **Mechanism B** | Placeholder Filtering Effectiveness | **100.0%** (1000 rows) | n=1,000 input rows (Noisy tokens nulled) |
-| **Performance** | Automated Processing Throughput | **8,897.6 rows/sec** | 112.4 ms for 1,000 rows |
+| **Performance** | Automated Processing Throughput | **10,681.5 rows/sec** | 93.6 ms for 1,000 rows |
 
 ---
 
@@ -51,8 +51,8 @@
 - **Approved Vocabulary Compliance:** 100.0% (100% of populated fields map to verified lookup entries; unverified values are safely labeled Unknown (0% invented).)
 - **Conflict Detection Rate:** 39.2% (392 conflicting rows safely flagged)
 - **Placeholder Filtering Rate:** 100.0% (1000 rows filtered of placeholder tokens)
-- **Total Processing Time:** 112.39 ms
-- **Throughput:** 8,897.6 items/second (0.112 ms/item)
+- **Total Processing Time:** 93.62 ms
+- **Throughput:** 10,681.5 items/second (0.094 ms/item)
 
 ### 4-Tier Trust Status Distribution Across 1,000 Rows:
 

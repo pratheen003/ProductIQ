@@ -13,6 +13,7 @@ import {
   ArrowRight,
   ShieldCheck,
   RefreshCw,
+  Download,
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { MetricCard } from "@/components/ui/MetricCard";
@@ -94,7 +95,16 @@ export default function CatalogDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="http://127.0.0.1:8000/api/catalog/export/delivery-format?format=xlsx"
+            download
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow transition"
+            title="Download full 1,000-row delivery format matching exact 252 headers"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download Delivery Format (.xlsx)</span>
+          </a>
           <Link
             href="/catalog/products"
             className="inline-flex items-center gap-2 px-4 py-2 bg-brand-accent text-white text-sm font-semibold rounded-lg shadow hover:bg-brand-accent/90 transition"

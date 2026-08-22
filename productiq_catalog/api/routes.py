@@ -283,3 +283,36 @@ def evaluate_compliance(force_refresh: bool = Query(False, description="Force re
     Reports LOV compliance, conflict detection rate, placeholder filtering, status distribution, and latency.
     """
     return _compliance_evaluator.evaluate(force_refresh=force_refresh)
+
+
+@router.get("/export/delivery-format")
+def export_delivery_format(format: str = Query("xlsx", pattern="^(xlsx|csv)$", description="File format (xlsx or csv)")):
+    """
+    Download the full 1,000-row enriched dataset in the exact 252-column schema of Unihack Expected Output.
+    """
+    from fastapi.responses import FileResponse
+    from productiq_catalog.export.delivery_format_exporter import DeliveryFormatExporter
+
+    filename = f"productiq_delivery_output.{format}"
+    file_path = _processed_dir / filename
+
+    if not file_path.exists():
+        exporter = DeliveryFormatExporter()
+        exporter.export_all(pipeline=_pipeline, input_loader=_input_loader)
+
+    if not file_path.exists():
+        raise HTTPException(status_code=500, detail=f"Failed to generate {filename}")
+
+    media_type = (
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        if format == "xlsx"
+        else "text/csv; charset=utf-8"
+    )
+
+    return FileResponse(
+        path=file_path,
+        filename=filename,
+        media_type=media_type,
+        headers={"Content-Disposition": f"attachment; filename={filename}"},
+    )
+

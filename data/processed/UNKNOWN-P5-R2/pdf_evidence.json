@@ -1,0 +1,46 @@
+{
+  "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+  "source_type": "pdf",
+  "product_id": "UNKNOWN-P5-R2",
+  "status": "success",
+  "evidence": [
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P5-R2",
+      "page": 5,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "00 In (A) IV pole 1.1 1.5 9",
+      "attribute": "",
+      "raw_value": "Efficiency",
+      "value": null,
+      "unit": null,
+      "evidence_text": "Output:  | :  | Frame:  | Full\nload\ntorque\n(Nm):  | Locked\nrotor\ncurrent\nII/In:  | Locked\nrotor\ntorque\nTI/Tn:  | Breakdown\ntorque Tb/\nTn:  | Inertia\nJ (kgm2):  | Allowable\nlocked\nrotor time (s):  | :  | Weight\n(kg):  | Sound\ndB (A):  | 400 V:  | : Efficiency | :  | :  | : Power factor | :  | :  | : ",
+      "method": "table",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P5-R2",
+      "page": 5,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "00 In (A) IV pole 1.1 1.5 9",
+      "attribute": "",
+      "raw_value": "Power factor",
+      "value": null,
+      "unit": null,
+      "evidence_text": "Output:  | :  | Frame:  | Full\nload\ntorque\n(Nm):  | Locked\nrotor\ncurrent\nII/In:  | Locked\nrotor\ntorque\nTI/Tn:  | Breakdown\ntorque Tb/\nTn:  | Inertia\nJ (kgm2):  | Allowable\nlocked\nrotor time (s):  | :  | Weight\n(kg):  | Sound\ndB (A):  | 400 V:  | : Efficiency | :  | :  | : Power factor | :  | :  | : ",
+      "method": "table",
+      "confidence": 0.9
+    }
+  ],
+  "error": null,
+  "source_ref": "D:\\ProductIq\\data\\pdf\\WEG_W22_Severe_Process_IE3_Brochure.pdf",
+  "pages_read": 12,
+  "rows_read": null
+}

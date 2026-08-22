@@ -1,0 +1,11 @@
+{
+  "REV-PIQ-W22SP-4P-1.1-rated_power-conflict": {
+    "review_id": "REV-PIQ-W22SP-4P-1.1-rated_power-conflict",
+    "product_id": "PIQ-W22SP-4P-1.1",
+    "selected_source": "pdf",
+    "resolved_value": "2.34 A",
+    "resolution_note": "Verified from manufacturer physical catalog datasheet page 5.",
+    "resolved_by": "Senior Application Engineer",
+    "resolved_at": "2026-08-20T12:00:00Z"
+  }
+}

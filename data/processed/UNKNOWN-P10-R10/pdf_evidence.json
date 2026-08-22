@@ -1,0 +1,29 @@
+{
+  "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+  "source_type": "pdf",
+  "product_id": "UNKNOWN-P10-R10",
+  "status": "success",
+  "evidence": [
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P10-R10",
+      "page": 10,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "frame_size",
+      "raw_value": "280",
+      "value": 280.0,
+      "unit": null,
+      "evidence_text": "Frame: 280 | Flange:  | LA:  | M:  | N:  | P:  | S:  | T:  | α:  | Nº of holes: ",
+      "method": "table",
+      "confidence": 0.9
+    }
+  ],
+  "error": null,
+  "source_ref": "D:\\ProductIq\\data\\pdf\\WEG_W22_Severe_Process_IE3_Brochure.pdf",
+  "pages_read": 12,
+  "rows_read": null
+}

@@ -1,0 +1,85 @@
+{
+  "product_id": "PIQ-W22SP-4P-15",
+  "manufacturer": "WEG",
+  "model": "W22 Severe Process IE3 (4-pole)",
+  "summary": "Industrial motor commercial summary.",
+  "technical_description": "Detailed engineering description.",
+  "key_selling_points": [
+    "IE3 Efficiency",
+    "IP56 Protection"
+  ],
+  "target_applications": [
+    "Pumps",
+    "Fans",
+    "Conveyors"
+  ],
+  "suggested_keywords": [
+    "WEG W22",
+    "Industrial Motor",
+    "IE3"
+  ],
+  "inferred_fields": {
+    "frequency": "50 Hz",
+    "poles": 4
+  },
+  "source_backed_claims": [
+    {
+      "claim_text": "1.1 kW output",
+      "category": "performance",
+      "field": "rated_power",
+      "is_source_backed": true,
+      "evidence_sources": [
+        "pdf"
+      ],
+      "confidence": 1.0,
+      "notes": null
+    }
+  ],
+  "inferred_claims": [
+    {
+      "claim_text": "Continuous pump duty",
+      "category": "application",
+      "field": null,
+      "is_source_backed": false,
+      "evidence_sources": [],
+      "confidence": 0.85,
+      "notes": "LLM inference"
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "field": "rated_power",
+      "description": "CONFLICT: Two sources report different values for 'rated_power' after normalization to canonical units. Source A (PDF, attr='rated_power') reports: 15.0 kW (raw: '15' kW). Source B (PDF, attr='rated_power_hp') reports: 14.914 kW (raw: '20' HP). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "rated_current",
+      "description": "CONFLICT: Two sources report different values for 'rated_current' after normalization to canonical units. Source A (PDF, attr='rated_current') reports: 28.4 A (raw: '28.4' A). Source B (CSV, attr='rated_current') reports: 7.3 A (raw: '7.3' A). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "efficiency",
+      "description": "CONFLICT: Two sources report different values for 'efficiency' after normalization to canonical units. Source A (PDF, attr='efficiency') reports: 93.0 % (raw: '93.0' %). Source B (CSV, attr='efficiency') reports: 91.8 % (raw: '91.8' %). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "power_factor",
+      "description": "CONFLICT: Two sources report different values for 'power_factor' after normalization to canonical units. Source A (PDF, attr='power_factor') reports: 0.82  (raw: '0.82' ). Source B (CSV, attr='power_factor') reports: 0.65  (raw: '0.65' ). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    }
+  ],
+  "missing_information_notes": [],
+  "enrichment_warnings": [
+    "Unresolved multi-source conflict detected in 'rated_power'.",
+    "Unresolved multi-source conflict detected in 'rated_current'.",
+    "Unresolved multi-source conflict detected in 'efficiency'.",
+    "Unresolved multi-source conflict detected in 'power_factor'."
+  ],
+  "metadata": {
+    "provider": "groq",
+    "llm_model": "openai/gpt-oss-20b",
+    "prompt_version": "4.0.0",
+    "generated_at": "2026-08-22T12:13:55.798080+00:00",
+    "total_claims": 2
+  }
+}

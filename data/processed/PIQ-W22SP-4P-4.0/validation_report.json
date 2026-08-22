@@ -1,0 +1,1176 @@
+{
+  "product_id": "PIQ-W22SP-4P-4.0",
+  "manufacturer": "WEG",
+  "model": "W22 Severe Process IE3 (4-pole)",
+  "validation_version": "3.0.0",
+  "validation_notes": [],
+  "overall_status": "CONFLICT",
+  "summary": {
+    "total_findings": 34,
+    "pass": 26,
+    "warning": 0,
+    "conflict": 5,
+    "fail": 0,
+    "not_checked": 3,
+    "by_category": {
+      "SCHEMA": 9,
+      "REQUIRED_FIELD": 3,
+      "MISSING_DATA": 6,
+      "RANGE": 7,
+      "CONFLICT": 5,
+      "ENGINEERING": 4
+    }
+  },
+  "findings": [
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_power",
+      "description": "Canonical unit check",
+      "actual_value": "kW",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'kW'",
+      "explanation": "Field 'rated_power' has correct canonical unit: 'kW' (expected 'kW').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power",
+          "raw_value": "4",
+          "raw_unit": "kW",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power_hp",
+          "raw_value": "5.5",
+          "raw_unit": "HP",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_power_raw",
+          "raw_value": "4 kW",
+          "raw_unit": null,
+          "page": null,
+          "row": 5,
+          "column": "rated_power_raw",
+          "section": null
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_power",
+          "raw_value": "4.0",
+          "raw_unit": "kW",
+          "page": null,
+          "row": 5,
+          "column": "rated_power_kw",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_voltage",
+      "description": "Canonical unit check",
+      "actual_value": "V",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'V'",
+      "explanation": "Field 'rated_voltage' has correct canonical unit: 'V' (expected 'V').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 4,
+          "row": null,
+          "column": null,
+          "section": "p.4 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 6,
+          "row": null,
+          "column": null,
+          "section": "p.6 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 7,
+          "row": null,
+          "column": null,
+          "section": "p.7 page-level text"
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_current",
+      "description": "Canonical unit check",
+      "actual_value": "A",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'A'",
+      "explanation": "Field 'rated_current' has correct canonical unit: 'A' (expected 'A').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_current",
+          "raw_value": "8.20",
+          "raw_unit": "A",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_current",
+          "raw_value": "7.0",
+          "raw_unit": "A",
+          "page": null,
+          "row": 5,
+          "column": "full_load_current_a",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_speed",
+      "description": "Canonical unit check",
+      "actual_value": "rpm",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'rpm'",
+      "explanation": "Field 'rated_speed' has correct canonical unit: 'rpm' (expected 'rpm').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": null,
+          "row": 5,
+          "column": "rated_speed_rpm",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "efficiency",
+      "description": "Canonical unit check",
+      "actual_value": "%",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = '%'",
+      "explanation": "Field 'efficiency' has correct canonical unit: '%' (expected '%').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "efficiency",
+          "raw_value": "89.1",
+          "raw_unit": "%",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "efficiency",
+          "raw_value": "88.7",
+          "raw_unit": "%",
+          "page": null,
+          "row": 5,
+          "column": "efficiency_percent",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "power_factor",
+      "description": "Canonical unit check",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'None'",
+      "explanation": "Field 'power_factor' has correct canonical unit: 'None' (expected 'None').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "power_factor",
+          "raw_value": "0.79",
+          "raw_unit": null,
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "power_factor",
+          "raw_value": "0.6",
+          "raw_unit": null,
+          "page": null,
+          "row": 5,
+          "column": "power_factor",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "weight",
+      "description": "Canonical unit check",
+      "actual_value": "kg",
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'kg'",
+      "explanation": "Field 'weight' has correct canonical unit: 'kg' (expected 'kg').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": null,
+          "row": 5,
+          "column": "weight_kg",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_CANONICAL_UNITS",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "frame_size",
+      "description": "Canonical unit check",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "canonical_unit = 'None'",
+      "explanation": "Field 'frame_size' has correct canonical unit: 'None' (expected 'None').",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "frame_size",
+          "raw_value": "112M",
+          "raw_unit": null,
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "frame_size",
+          "raw_value": "112M",
+          "raw_unit": null,
+          "page": null,
+          "row": 5,
+          "column": "frame",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "SCHEMA_NORMALIZATION_VERSION",
+      "category": "SCHEMA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "(product)",
+      "description": "Normalization version check",
+      "actual_value": "2.0.0",
+      "actual_unit": null,
+      "expected_condition": "normalization_version = '2.0.0'",
+      "explanation": "Normalized product uses recognized version '2.0.0'.",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "REQUIRED_FIELD_PRESENCE",
+      "category": "REQUIRED_FIELD",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_power",
+      "description": "Required field 'rated_power' presence check",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "field must have at least one evidence record",
+      "explanation": "Required field 'rated_power' has 4 evidence reference(s), outcome='conflict'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power",
+          "raw_value": "4",
+          "raw_unit": "kW",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power_hp",
+          "raw_value": "5.5",
+          "raw_unit": "HP",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_power_raw",
+          "raw_value": "4 kW",
+          "raw_unit": null,
+          "page": null,
+          "row": 5,
+          "column": "rated_power_raw",
+          "section": null
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_power",
+          "raw_value": "4.0",
+          "raw_unit": "kW",
+          "page": null,
+          "row": 5,
+          "column": "rated_power_kw",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "REQUIRED_FIELD_PRESENCE",
+      "category": "REQUIRED_FIELD",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_speed",
+      "description": "Required field 'rated_speed' presence check",
+      "actual_value": 1450.0,
+      "actual_unit": null,
+      "expected_condition": "field must have at least one evidence record",
+      "explanation": "Required field 'rated_speed' has 2 evidence reference(s), outcome='passthrough'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": null,
+          "row": 5,
+          "column": "rated_speed_rpm",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "REQUIRED_FIELD_PRESENCE",
+      "category": "REQUIRED_FIELD",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_voltage",
+      "description": "Required field 'rated_voltage' presence check",
+      "actual_value": 400.0,
+      "actual_unit": null,
+      "expected_condition": "field must have at least one evidence record",
+      "explanation": "Required field 'rated_voltage' has 4 evidence reference(s), outcome='passthrough'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 4,
+          "row": null,
+          "column": null,
+          "section": "p.4 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 6,
+          "row": null,
+          "column": null,
+          "section": "p.6 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 7,
+          "row": null,
+          "column": null,
+          "section": "p.7 page-level text"
+        }
+      ]
+    },
+    {
+      "rule_id": "IMPORTANT_FIELD_PRESENCE",
+      "category": "MISSING_DATA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "efficiency",
+      "description": "Important field 'efficiency' presence check",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "field should have evidence",
+      "explanation": "Field 'efficiency' has evidence, outcome='conflict'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "efficiency",
+          "raw_value": "89.1",
+          "raw_unit": "%",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "efficiency",
+          "raw_value": "88.7",
+          "raw_unit": "%",
+          "page": null,
+          "row": 5,
+          "column": "efficiency_percent",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "IMPORTANT_FIELD_PRESENCE",
+      "category": "MISSING_DATA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_current",
+      "description": "Important field 'rated_current' presence check",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "field should have evidence",
+      "explanation": "Field 'rated_current' has evidence, outcome='conflict'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_current",
+          "raw_value": "8.20",
+          "raw_unit": "A",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_current",
+          "raw_value": "7.0",
+          "raw_unit": "A",
+          "page": null,
+          "row": 5,
+          "column": "full_load_current_a",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "IMPORTANT_FIELD_PRESENCE",
+      "category": "MISSING_DATA",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "weight",
+      "description": "Important field 'weight' presence check",
+      "actual_value": 44.0,
+      "actual_unit": null,
+      "expected_condition": "field should have evidence",
+      "explanation": "Field 'weight' has evidence, outcome='passthrough'.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": null,
+          "row": 5,
+          "column": "weight_kg",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "RANGE_RATED_POWER_POSITIVE",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_power",
+      "description": "rated_power must be positive (> 0 kW)",
+      "actual_value": "(conflicted — see conflict findings)",
+      "actual_unit": null,
+      "expected_condition": "> 0.0",
+      "explanation": "Field 'rated_power' is conflicted but all conflict values are within the valid range (> 0.0).",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "RANGE_RATED_VOLTAGE_POSITIVE",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_voltage",
+      "description": "rated_voltage must be positive (> 0 V)",
+      "actual_value": 400.0,
+      "actual_unit": "V",
+      "expected_condition": "> 0.0",
+      "explanation": "Field 'rated_voltage' value 400.0 V is within the valid range (> 0.0).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 4,
+          "row": null,
+          "column": null,
+          "section": "p.4 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 6,
+          "row": null,
+          "column": null,
+          "section": "p.6 page-level text"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_voltage",
+          "raw_value": "400",
+          "raw_unit": "V",
+          "page": 7,
+          "row": null,
+          "column": null,
+          "section": "p.7 page-level text"
+        }
+      ]
+    },
+    {
+      "rule_id": "RANGE_RATED_CURRENT_POSITIVE",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_current",
+      "description": "rated_current must be positive (> 0 A)",
+      "actual_value": "(conflicted — see conflict findings)",
+      "actual_unit": null,
+      "expected_condition": "> 0.0",
+      "explanation": "Field 'rated_current' is conflicted but all conflict values are within the valid range (> 0.0).",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "RANGE_RATED_SPEED_POSITIVE",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_speed",
+      "description": "rated_speed must be positive (> 0 rpm)",
+      "actual_value": 1450.0,
+      "actual_unit": "rpm",
+      "expected_condition": "> 0.0",
+      "explanation": "Field 'rated_speed' value 1450.0 rpm is within the valid range (> 0.0).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": null,
+          "row": 5,
+          "column": "rated_speed_rpm",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "RANGE_EFFICIENCY_BOUNDS",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "efficiency",
+      "description": "efficiency must be in [0, 100]%",
+      "actual_value": "(conflicted — see conflict findings)",
+      "actual_unit": null,
+      "expected_condition": "[0.0, 100.0]",
+      "explanation": "Field 'efficiency' is conflicted but all conflict values are within the valid range ([0.0, 100.0]).",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "RANGE_POWER_FACTOR_BOUNDS",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "power_factor",
+      "description": "power_factor must be in [0.0, 1.0] (dimensionless)",
+      "actual_value": "(conflicted — see conflict findings)",
+      "actual_unit": null,
+      "expected_condition": "[0.0, 1.0]",
+      "explanation": "Field 'power_factor' is conflicted but all conflict values are within the valid range ([0.0, 1.0]).",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "RANGE_WEIGHT_POSITIVE",
+      "category": "RANGE",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "weight",
+      "description": "weight must be positive (> 0 kg)",
+      "actual_value": 44.0,
+      "actual_unit": "kg",
+      "expected_condition": "> 0.0",
+      "explanation": "Field 'weight' value 44.0 kg is within the valid range (> 0.0).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "weight",
+          "raw_value": "44.0",
+          "raw_unit": "kg",
+          "page": null,
+          "row": 5,
+          "column": "weight_kg",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "CONSISTENCY_CROSS_SOURCE",
+      "category": "CONFLICT",
+      "status": "CONFLICT",
+      "severity": "HIGH",
+      "field": "rated_power",
+      "description": "Cross-source conflict in 'rated_power'",
+      "actual_value": "4.0 kW vs 4.10135 kW",
+      "actual_unit": null,
+      "expected_condition": "all sources should agree on normalized value",
+      "explanation": "CONFLICT: Two sources report different values for 'rated_power' after normalization to canonical units. Source A (PDF, attr='rated_power') reports: 4.0 kW (raw: '4' kW). Source B (PDF, attr='rated_power_hp') reports: 4.10135 kW (raw: '5.5' HP). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power",
+          "raw_value": "4",
+          "raw_unit": "kW",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power_hp",
+          "raw_value": "5.5",
+          "raw_unit": "HP",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        }
+      ]
+    },
+    {
+      "rule_id": "CONSISTENCY_CROSS_SOURCE",
+      "category": "CONFLICT",
+      "status": "CONFLICT",
+      "severity": "HIGH",
+      "field": "rated_current",
+      "description": "Cross-source conflict in 'rated_current'",
+      "actual_value": "8.2 A vs 7.0 A",
+      "actual_unit": null,
+      "expected_condition": "all sources should agree on normalized value",
+      "explanation": "CONFLICT: Two sources report different values for 'rated_current' after normalization to canonical units. Source A (PDF, attr='rated_current') reports: 8.2 A (raw: '8.20' A). Source B (CSV, attr='rated_current') reports: 7.0 A (raw: '7.0' A). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_current",
+          "raw_value": "8.20",
+          "raw_unit": "A",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_current",
+          "raw_value": "7.0",
+          "raw_unit": "A",
+          "page": null,
+          "row": 5,
+          "column": "full_load_current_a",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "CONSISTENCY_CROSS_SOURCE",
+      "category": "CONFLICT",
+      "status": "CONFLICT",
+      "severity": "HIGH",
+      "field": "efficiency",
+      "description": "Cross-source conflict in 'efficiency'",
+      "actual_value": "89.1 % vs 88.7 %",
+      "actual_unit": null,
+      "expected_condition": "all sources should agree on normalized value",
+      "explanation": "CONFLICT: Two sources report different values for 'efficiency' after normalization to canonical units. Source A (PDF, attr='efficiency') reports: 89.1 % (raw: '89.1' %). Source B (CSV, attr='efficiency') reports: 88.7 % (raw: '88.7' %). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "efficiency",
+          "raw_value": "89.1",
+          "raw_unit": "%",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "efficiency",
+          "raw_value": "88.7",
+          "raw_unit": "%",
+          "page": null,
+          "row": 5,
+          "column": "efficiency_percent",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "CONSISTENCY_CROSS_SOURCE",
+      "category": "CONFLICT",
+      "status": "CONFLICT",
+      "severity": "HIGH",
+      "field": "power_factor",
+      "description": "Cross-source conflict in 'power_factor'",
+      "actual_value": "0.79  vs 0.6 ",
+      "actual_unit": null,
+      "expected_condition": "all sources should agree on normalized value",
+      "explanation": "CONFLICT: Two sources report different values for 'power_factor' after normalization to canonical units. Source A (PDF, attr='power_factor') reports: 0.79  (raw: '0.79' ). Source B (CSV, attr='power_factor') reports: 0.6  (raw: '0.6' ). These two sources disagree about this attribute. No winner has been picked — resolution is deferred to Phase 3 validation.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "power_factor",
+          "raw_value": "0.79",
+          "raw_unit": null,
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "power_factor",
+          "raw_value": "0.6",
+          "raw_unit": null,
+          "page": null,
+          "row": 5,
+          "column": "power_factor",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "ENGINEERING_TORQUE_POWER_RPM",
+      "category": "ENGINEERING",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "full_load_torque_nm",
+      "description": "Torque-Power-RPM consistency check",
+      "actual_value": 26.4,
+      "actual_unit": "Nm",
+      "expected_condition": "≈ 26.343 Nm ± 15%",
+      "explanation": "PASS: Reported torque is consistent with rated power and speed. OBSERVED: P=4.0 kW, N=1450.0 rpm, T=26.4 Nm. EXPECTED TORQUE: T = (P×1000×60)/(2π×N) = (4.0×1000×60)/(2π×1450.0) ≈ 26.343 Nm. DIFFERENCE: 0.2% (tolerance: 15%).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_power",
+          "raw_value": "4",
+          "raw_unit": "kW",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "full_load_torque_nm",
+          "raw_value": "26.4",
+          "raw_unit": "Nm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        }
+      ]
+    },
+    {
+      "rule_id": "ENGINEERING_EFFICIENCY_IE3",
+      "category": "ENGINEERING",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "efficiency",
+      "description": "IE3 efficiency plausibility check",
+      "actual_value": 89.1,
+      "actual_unit": "%",
+      "expected_condition": "≥ 80.0%",
+      "explanation": "Efficiency 89.1% is plausible for an IE3 class motor (≥ 80.0% threshold).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "efficiency",
+          "raw_value": "89.1",
+          "raw_unit": "%",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "efficiency",
+          "raw_value": "88.7",
+          "raw_unit": "%",
+          "page": null,
+          "row": 5,
+          "column": "efficiency_percent",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "ENGINEERING_EFFICIENCY_IE3",
+      "category": "ENGINEERING",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "efficiency",
+      "description": "IE3 efficiency plausibility check",
+      "actual_value": 88.7,
+      "actual_unit": "%",
+      "expected_condition": "≥ 80.0%",
+      "explanation": "Efficiency 88.7% is plausible for an IE3 class motor (≥ 80.0% threshold).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "efficiency",
+          "raw_value": "89.1",
+          "raw_unit": "%",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "efficiency",
+          "raw_value": "88.7",
+          "raw_unit": "%",
+          "page": null,
+          "row": 5,
+          "column": "efficiency_percent",
+          "section": null
+        }
+      ]
+    },
+    {
+      "rule_id": "ENGINEERING_SYNCHRONOUS_SPEED",
+      "category": "ENGINEERING",
+      "status": "PASS",
+      "severity": "INFO",
+      "field": "rated_speed",
+      "description": "Synchronous speed consistency check",
+      "actual_value": 1450.0,
+      "actual_unit": "rpm",
+      "expected_condition": "< 1500 rpm (synchronous speed for 4-pole, 50.0 Hz)",
+      "explanation": "PASS: rated_speed (1450.0 rpm) < synchronous speed (1500 rpm). Slip = 3.33%. ns = 120 × 50.0 / 4 = 1500 rpm (assumed 50 Hz — WEG European spec).",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_speed",
+          "raw_value": "1450",
+          "raw_unit": "rpm",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        }
+      ]
+    },
+    {
+      "rule_id": "MISSING_DATA_INVENTORY",
+      "category": "MISSING_DATA",
+      "status": "NOT_CHECKED",
+      "severity": "LOW",
+      "field": "frequency",
+      "description": "Field 'frequency' has no evidence",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "N/A — optional field",
+      "explanation": "Optional field 'frequency' has no evidence from any source. This is recorded for completeness; it is not an error for optional fields.",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "MISSING_DATA_INVENTORY",
+      "category": "MISSING_DATA",
+      "status": "NOT_CHECKED",
+      "severity": "LOW",
+      "field": "poles",
+      "description": "Field 'poles' has no evidence",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "N/A — optional field",
+      "explanation": "Optional field 'poles' has no evidence from any source. This is recorded for completeness; it is not an error for optional fields.",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "MISSING_DATA_INVENTORY",
+      "category": "MISSING_DATA",
+      "status": "NOT_CHECKED",
+      "severity": "LOW",
+      "field": "ip_rating",
+      "description": "Field 'ip_rating' has no evidence",
+      "actual_value": null,
+      "actual_unit": null,
+      "expected_condition": "N/A — optional field",
+      "explanation": "Optional field 'ip_rating' has no evidence from any source. This is recorded for completeness; it is not an error for optional fields.",
+      "evidence_refs": []
+    },
+    {
+      "rule_id": "CONFLICT_RATED_CURRENT_PDF_VS_CSV",
+      "category": "CONFLICT",
+      "status": "CONFLICT",
+      "severity": "HIGH",
+      "field": "rated_current",
+      "description": "PDF-reported rated current conflicts with CSV-reported value",
+      "actual_value": "PDF: 8.2 A (raw: '8.20') vs CSV: 7.0 A (raw: '7.0')",
+      "actual_unit": null,
+      "expected_condition": "all sources should report the same rated current",
+      "explanation": "CONFLICT: These two sources disagree about rated_current. PDF source ('rated_current') reports 8.2 A (raw: '8.20'). CSV source ('rated_current') reports 7.0 A (raw: '7.0'). NOTE: The CSV column 'full_load_current_a' contains the value 7.0, which matches the full-load torque in Nm from the PDF. This suggests the CSV column may be mislabeled as current when it actually contains torque data. Resolution requires Phase 3 cross-field consistency analysis. No winner has been picked — both values are preserved.",
+      "evidence_refs": [
+        {
+          "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+          "source_type": "pdf",
+          "attribute": "rated_current",
+          "raw_value": "8.20",
+          "raw_unit": "A",
+          "page": 5,
+          "row": null,
+          "column": null,
+          "section": "p.5, 4-pole electrical data table"
+        },
+        {
+          "source_id": "legacy_motors_csv_weg_w22sp_derived",
+          "source_type": "csv",
+          "attribute": "rated_current",
+          "raw_value": "7.0",
+          "raw_unit": "A",
+          "page": null,
+          "row": 5,
+          "column": "full_load_current_a",
+          "section": null
+        }
+      ]
+    }
+  ]
+}

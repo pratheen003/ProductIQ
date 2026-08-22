@@ -1,0 +1,421 @@
+{
+  "product_id": "PIQ-W22SP-4P-4.0",
+  "manufacturer": "WEG",
+  "model": "W22 Severe Process IE3 (4-pole)",
+  "overall_trust_status": "CONFLICTED",
+  "overall_publishability": "REVIEW_REQUIRED",
+  "trust_score": 0.4117,
+  "trust_score_formula": "TrustScore = clamp(0.35*Completeness(0.91) + 0.35*Validity(0.84) + 0.3*Diversity(1.00) - ConflictPenalty(0.50), 0.0, 1.0) = 0.4117",
+  "trust_score_breakdown": {
+    "completeness_score": 0.9091,
+    "validity_score": 0.8387,
+    "diversity_score": 1.0,
+    "conflict_penalty": 0.5,
+    "completeness_weight": 0.35,
+    "validity_weight": 0.35,
+    "diversity_weight": 0.3
+  },
+  "attribute_trust": {
+    "rated_power": {
+      "field": "rated_power",
+      "canonical_value": null,
+      "canonical_unit": "kW",
+      "trust_status": "CONFLICTED",
+      "publishability": "REVIEW_REQUIRED",
+      "validation_status": "CONFLICT",
+      "is_conflicted": true,
+      "evidence_sources": [
+        "pdf:p.5 (rated_power)",
+        "pdf:p.5 (rated_power_hp)",
+        "csv:row.5 (rated_power_raw)",
+        "csv:row.5 (rated_power)"
+      ],
+      "confidence_score": 0.3,
+      "reason": "CONFLICT: Source disagreement: pdf reports 4.0 kW vs pdf reports 4.10135 kW. No single winner picked \u2014 resolution requires human review.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "REQUIRED_FIELD_PRESENCE",
+        "RANGE_RATED_POWER_POSITIVE",
+        "CONSISTENCY_CROSS_SOURCE"
+      ]
+    },
+    "rated_voltage": {
+      "field": "rated_voltage",
+      "canonical_value": 400.0,
+      "canonical_unit": "V",
+      "trust_status": "TRUSTED",
+      "publishability": "PUBLISHABLE",
+      "validation_status": "PASS",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "pdf:p.4 (rated_voltage)",
+        "pdf:p.5 (rated_voltage)",
+        "pdf:p.6 (rated_voltage)",
+        "pdf:p.7 (rated_voltage)"
+      ],
+      "confidence_score": 1.0,
+      "reason": "Verified from manufacturer source evidence and passed all validation checks.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "REQUIRED_FIELD_PRESENCE",
+        "RANGE_RATED_VOLTAGE_POSITIVE"
+      ]
+    },
+    "rated_current": {
+      "field": "rated_current",
+      "canonical_value": null,
+      "canonical_unit": "A",
+      "trust_status": "CONFLICTED",
+      "publishability": "REVIEW_REQUIRED",
+      "validation_status": "CONFLICT",
+      "is_conflicted": true,
+      "evidence_sources": [
+        "pdf:p.5 (rated_current)",
+        "csv:row.5 (rated_current)"
+      ],
+      "confidence_score": 0.3,
+      "reason": "CONFLICT: Source disagreement: pdf reports 8.2 A vs csv reports 7.0 A. No single winner picked \u2014 resolution requires human review.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "IMPORTANT_FIELD_PRESENCE",
+        "RANGE_RATED_CURRENT_POSITIVE",
+        "CONSISTENCY_CROSS_SOURCE",
+        "CONFLICT_RATED_CURRENT_PDF_VS_CSV"
+      ]
+    },
+    "frequency": {
+      "field": "frequency",
+      "canonical_value": "50 Hz",
+      "canonical_unit": "Hz",
+      "trust_status": "UNVERIFIED",
+      "publishability": "PUBLISHABLE_WITH_WARNING",
+      "validation_status": "NOT_CHECKED",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "llm-enrichment"
+      ],
+      "confidence_score": 0.7,
+      "reason": "Parameter 'frequency' is an AI-grounded inference (50 Hz). Not directly extracted from datasheet tables.",
+      "validation_rule_ids": [
+        "MISSING_DATA_INVENTORY"
+      ]
+    },
+    "rated_speed": {
+      "field": "rated_speed",
+      "canonical_value": 1450.0,
+      "canonical_unit": "rpm",
+      "trust_status": "TRUSTED",
+      "publishability": "PUBLISHABLE",
+      "validation_status": "PASS",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "pdf:p.5 (rated_speed)",
+        "csv:row.5 (rated_speed)"
+      ],
+      "confidence_score": 1.0,
+      "reason": "Verified from manufacturer source evidence and passed all validation checks.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "REQUIRED_FIELD_PRESENCE",
+        "RANGE_RATED_SPEED_POSITIVE",
+        "ENGINEERING_SYNCHRONOUS_SPEED"
+      ]
+    },
+    "poles": {
+      "field": "poles",
+      "canonical_value": 4,
+      "canonical_unit": null,
+      "trust_status": "UNVERIFIED",
+      "publishability": "PUBLISHABLE_WITH_WARNING",
+      "validation_status": "NOT_CHECKED",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "llm-enrichment"
+      ],
+      "confidence_score": 0.7,
+      "reason": "Parameter 'poles' is an AI-grounded inference (4). Not directly extracted from datasheet tables.",
+      "validation_rule_ids": [
+        "MISSING_DATA_INVENTORY"
+      ]
+    },
+    "efficiency": {
+      "field": "efficiency",
+      "canonical_value": null,
+      "canonical_unit": "%",
+      "trust_status": "CONFLICTED",
+      "publishability": "REVIEW_REQUIRED",
+      "validation_status": "CONFLICT",
+      "is_conflicted": true,
+      "evidence_sources": [
+        "pdf:p.5 (efficiency)",
+        "csv:row.5 (efficiency)"
+      ],
+      "confidence_score": 0.3,
+      "reason": "CONFLICT: Source disagreement: pdf reports 89.1 % vs csv reports 88.7 %. No single winner picked \u2014 resolution requires human review.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "IMPORTANT_FIELD_PRESENCE",
+        "RANGE_EFFICIENCY_BOUNDS",
+        "CONSISTENCY_CROSS_SOURCE",
+        "ENGINEERING_EFFICIENCY_IE3",
+        "ENGINEERING_EFFICIENCY_IE3"
+      ]
+    },
+    "power_factor": {
+      "field": "power_factor",
+      "canonical_value": null,
+      "canonical_unit": null,
+      "trust_status": "CONFLICTED",
+      "publishability": "REVIEW_REQUIRED",
+      "validation_status": "CONFLICT",
+      "is_conflicted": true,
+      "evidence_sources": [
+        "pdf:p.5 (power_factor)",
+        "csv:row.5 (power_factor)"
+      ],
+      "confidence_score": 0.3,
+      "reason": "CONFLICT: Source disagreement: pdf reports 0.79  vs csv reports 0.6 . No single winner picked \u2014 resolution requires human review.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "RANGE_POWER_FACTOR_BOUNDS",
+        "CONSISTENCY_CROSS_SOURCE"
+      ]
+    },
+    "weight": {
+      "field": "weight",
+      "canonical_value": 44.0,
+      "canonical_unit": "kg",
+      "trust_status": "TRUSTED",
+      "publishability": "PUBLISHABLE",
+      "validation_status": "PASS",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "pdf:p.5 (weight)",
+        "csv:row.5 (weight)"
+      ],
+      "confidence_score": 1.0,
+      "reason": "Verified from manufacturer source evidence and passed all validation checks.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS",
+        "IMPORTANT_FIELD_PRESENCE",
+        "RANGE_WEIGHT_POSITIVE"
+      ]
+    },
+    "ip_rating": {
+      "field": "ip_rating",
+      "canonical_value": null,
+      "canonical_unit": null,
+      "trust_status": "MISSING",
+      "publishability": "NOT_PUBLISHABLE",
+      "validation_status": "NOT_CHECKED",
+      "is_conflicted": false,
+      "evidence_sources": [],
+      "confidence_score": 0.0,
+      "reason": "Parameter 'ip_rating' is missing across all ingested sources.",
+      "validation_rule_ids": [
+        "MISSING_DATA_INVENTORY"
+      ]
+    },
+    "frame_size": {
+      "field": "frame_size",
+      "canonical_value": "112M",
+      "canonical_unit": null,
+      "trust_status": "TRUSTED",
+      "publishability": "PUBLISHABLE",
+      "validation_status": "PASS",
+      "is_conflicted": false,
+      "evidence_sources": [
+        "pdf:p.5 (frame_size)",
+        "csv:row.5 (frame_size)"
+      ],
+      "confidence_score": 1.0,
+      "reason": "Verified from manufacturer source evidence and passed all validation checks.",
+      "validation_rule_ids": [
+        "SCHEMA_CANONICAL_UNITS"
+      ]
+    }
+  },
+  "claim_trust": [
+    {
+      "claim_text": "1.1 kW output",
+      "category": "performance",
+      "claim_type": "SOURCE_BACKED",
+      "trust_status": "CONFLICTED",
+      "publishability": "REVIEW_REQUIRED",
+      "supporting_fields": [
+        "rated_power"
+      ],
+      "evidence_sources": [
+        "pdf"
+      ],
+      "confidence": 0.4,
+      "reason": "Claim touches field 'rated_power' which has unresolved multi-source conflicts."
+    },
+    {
+      "claim_text": "Continuous pump duty",
+      "category": "application",
+      "claim_type": "INFERRED",
+      "trust_status": "UNVERIFIED",
+      "publishability": "PUBLISHABLE_WITH_WARNING",
+      "supporting_fields": [],
+      "evidence_sources": [],
+      "confidence": 0.85,
+      "reason": "Inferred by LLM reasoning (LLM inference). Safe for catalog search with inferred disclaimer."
+    }
+  ],
+  "review_queue": [
+    {
+      "review_id": "REV-PIQ-W22SP-4P-4.0-rated_power-conflict",
+      "target_type": "attribute",
+      "target_name": "rated_power",
+      "severity": "HIGH",
+      "issue_type": "CONFLICT",
+      "description": "Field 'rated_power' has conflicting values from multiple authoritative sources.",
+      "conflicting_values": [
+        {
+          "source_a": "pdf",
+          "value_a": 4.0,
+          "unit_a": "kW",
+          "raw_a": "4",
+          "source_b": "pdf",
+          "value_b": 4.10135,
+          "unit_b": "kW",
+          "raw_b": "5.5"
+        }
+      ],
+      "validation_rule_id": "CONFLICT_CROSS_SOURCE",
+      "affected_claims": [],
+      "recommended_action": "Inspect physical nameplate or official dimension drawing to resolve 'rated_power'."
+    },
+    {
+      "review_id": "REV-PIQ-W22SP-4P-4.0-rated_current-conflict",
+      "target_type": "attribute",
+      "target_name": "rated_current",
+      "severity": "HIGH",
+      "issue_type": "CONFLICT",
+      "description": "Field 'rated_current' has conflicting values from multiple authoritative sources.",
+      "conflicting_values": [
+        {
+          "source_a": "pdf",
+          "value_a": 8.2,
+          "unit_a": "A",
+          "raw_a": "8.20",
+          "source_b": "csv",
+          "value_b": 7.0,
+          "unit_b": "A",
+          "raw_b": "7.0"
+        }
+      ],
+      "validation_rule_id": "CONFLICT_CROSS_SOURCE",
+      "affected_claims": [],
+      "recommended_action": "Inspect physical nameplate or official dimension drawing to resolve 'rated_current'."
+    },
+    {
+      "review_id": "REV-PIQ-W22SP-4P-4.0-efficiency-conflict",
+      "target_type": "attribute",
+      "target_name": "efficiency",
+      "severity": "HIGH",
+      "issue_type": "CONFLICT",
+      "description": "Field 'efficiency' has conflicting values from multiple authoritative sources.",
+      "conflicting_values": [
+        {
+          "source_a": "pdf",
+          "value_a": 89.1,
+          "unit_a": "%",
+          "raw_a": "89.1",
+          "source_b": "csv",
+          "value_b": 88.7,
+          "unit_b": "%",
+          "raw_b": "88.7"
+        }
+      ],
+      "validation_rule_id": "CONFLICT_CROSS_SOURCE",
+      "affected_claims": [],
+      "recommended_action": "Inspect physical nameplate or official dimension drawing to resolve 'efficiency'."
+    },
+    {
+      "review_id": "REV-PIQ-W22SP-4P-4.0-power_factor-conflict",
+      "target_type": "attribute",
+      "target_name": "power_factor",
+      "severity": "HIGH",
+      "issue_type": "CONFLICT",
+      "description": "Field 'power_factor' has conflicting values from multiple authoritative sources.",
+      "conflicting_values": [
+        {
+          "source_a": "pdf",
+          "value_a": 0.79,
+          "unit_a": null,
+          "raw_a": "0.79",
+          "source_b": "csv",
+          "value_b": 0.6,
+          "unit_b": null,
+          "raw_b": "0.6"
+        }
+      ],
+      "validation_rule_id": "CONFLICT_CROSS_SOURCE",
+      "affected_claims": [],
+      "recommended_action": "Inspect physical nameplate or official dimension drawing to resolve 'power_factor'."
+    },
+    {
+      "review_id": "REV-PIQ-W22SP-4P-4.0-claim-performance-conflict",
+      "target_type": "claim",
+      "target_name": "rated_power",
+      "severity": "HIGH",
+      "issue_type": "CONFLICT",
+      "description": "AI claim '1.1 kW output' references conflicted specification 'rated_power'.",
+      "conflicting_values": null,
+      "validation_rule_id": null,
+      "affected_claims": [
+        "1.1 kW output"
+      ],
+      "recommended_action": "Do not publish claim as uncontested fact until specification conflict is resolved."
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "field": "rated_power",
+      "description": "CONFLICT: Two sources report different values for 'rated_power' after normalization to canonical units. Source A (PDF, attr='rated_power') reports: 4.0 kW (raw: '4' kW). Source B (PDF, attr='rated_power_hp') reports: 4.10135 kW (raw: '5.5' HP). These two sources disagree about this attribute. No winner has been picked \u2014 resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "rated_current",
+      "description": "CONFLICT: Two sources report different values for 'rated_current' after normalization to canonical units. Source A (PDF, attr='rated_current') reports: 8.2 A (raw: '8.20' A). Source B (CSV, attr='rated_current') reports: 7.0 A (raw: '7.0' A). These two sources disagree about this attribute. No winner has been picked \u2014 resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "efficiency",
+      "description": "CONFLICT: Two sources report different values for 'efficiency' after normalization to canonical units. Source A (PDF, attr='efficiency') reports: 89.1 % (raw: '89.1' %). Source B (CSV, attr='efficiency') reports: 88.7 % (raw: '88.7' %). These two sources disagree about this attribute. No winner has been picked \u2014 resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    },
+    {
+      "field": "power_factor",
+      "description": "CONFLICT: Two sources report different values for 'power_factor' after normalization to canonical units. Source A (PDF, attr='power_factor') reports: 0.79  (raw: '0.79' ). Source B (CSV, attr='power_factor') reports: 0.6  (raw: '0.6' ). These two sources disagree about this attribute. No winner has been picked \u2014 resolution is deferred to Phase 3 validation.",
+      "action_needed": "Requires physical nameplate or engineering drawing verification."
+    }
+  ],
+  "publishable_attributes": [
+    "rated_voltage",
+    "frequency",
+    "rated_speed",
+    "poles",
+    "weight",
+    "frame_size"
+  ],
+  "restricted_attributes": [
+    "rated_power",
+    "rated_current",
+    "efficiency",
+    "power_factor",
+    "ip_rating"
+  ],
+  "summary_reason": "Product has 4 unresolved multi-source conflict(s) (efficiency, power_factor, rated_current, rated_power). Human engineering review required before publication.",
+  "metadata": {
+    "evaluator_version": "5.0.0",
+    "has_normalization": true,
+    "has_validation": true,
+    "has_enrichment": true,
+    "total_attributes_evaluated": 11,
+    "total_claims_evaluated": 2,
+    "conflicted_fields_count": 4
+  }
+}

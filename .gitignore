@@ -46,8 +46,7 @@ logs/
 
 # Processed outputs (generated data — do not commit)
 # JSON evidence files live in subdirectories; exclude all but keep .gitkeep
-data/processed/**/*.json
-data/processed/*.json
+
 
 # Jupyter
 .ipynb_checkpoints/

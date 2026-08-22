@@ -1,0 +1,63 @@
+{
+  "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+  "source_type": "pdf",
+  "product_id": "UNKNOWN-P11-R9",
+  "status": "success",
+  "evidence": [
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R9",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "frame_size",
+      "raw_value": "250S/M",
+      "value": 250.0,
+      "unit": null,
+      "evidence_text": "Frame: 250S/M | A B C D E:  | F G H I J:  | K L:  | M N O:  | P:  | Q:  | R:  | S:  | T:  | U: ",
+      "method": "table",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R9",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "frame_size",
+      "raw_value": "225S/M",
+      "value": 225.0,
+      "unit": null,
+      "evidence_text": "Frame: 225S/M | V X Y Z: 192\n25-50 mm²\n150 197\n204\nM10x1.5 35-70 mm²\n200 260\n260 300 85-120 mm² | AA BA CA DA EA:  | FA GA HA:  | IA JA KA:  | Max number of connectors:  | :  | : ",
+      "method": "table",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R9",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "V X Y Z",
+      "raw_value": "192\n25-50 mm²\n150 197\n204\nM10x1.5 35-70 mm²\n200 260\n260 300 85-120 mm²",
+      "value": 192.0,
+      "unit": null,
+      "evidence_text": "Frame: 225S/M | V X Y Z: 192\n25-50 mm²\n150 197\n204\nM10x1.5 35-70 mm²\n200 260\n260 300 85-120 mm² | AA BA CA DA EA:  | FA GA HA:  | IA JA KA:  | Max number of connectors:  | :  | : ",
+      "method": "table",
+      "confidence": 0.9
+    }
+  ],
+  "error": null,
+  "source_ref": "D:\\ProductIq\\data\\pdf\\WEG_W22_Severe_Process_IE3_Brochure.pdf",
+  "pages_read": 12,
+  "rows_read": null
+}

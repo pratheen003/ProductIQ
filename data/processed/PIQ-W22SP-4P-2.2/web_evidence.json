@@ -1,0 +1,11 @@
+{
+  "source_id": "web_PIQ-W22SP-4P-2.2",
+  "source_type": "web",
+  "product_id": "PIQ-W22SP-4P-2.2",
+  "status": "failed",
+  "evidence": [],
+  "error": "403 Client Error: Forbidden for url: https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+  "source_ref": "https://www.weg.net/catalog/weg/CI/en/Electric-Motors/Low-Voltage-IEC-Motors/Three-Phase/W22/",
+  "pages_read": null,
+  "rows_read": null
+}

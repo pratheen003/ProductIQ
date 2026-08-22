@@ -1,0 +1,12 @@
+{
+  "products_processed": 12,
+  "products_enriched": 12,
+  "products_failed": 0,
+  "total_claims_generated": 24,
+  "source_backed_claims_count": 12,
+  "inferred_claims_count": 12,
+  "unresolved_conflicts_count": 49,
+  "provider": "groq",
+  "model": "openai/gpt-oss-20b",
+  "timestamp": "2026-08-22T12:13:55.757201+00:00"
+}

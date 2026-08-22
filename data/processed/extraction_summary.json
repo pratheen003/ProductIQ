@@ -1,0 +1,13 @@
+{
+  "products_discovered": 12,
+  "pdf_attempted": 12,
+  "pdf_succeeded": 12,
+  "pdf_failed": 0,
+  "csv_attempted": 12,
+  "csv_succeeded": 12,
+  "csv_failed": 0,
+  "web_attempted": 12,
+  "web_succeeded": 0,
+  "web_failed": 12,
+  "total_evidence": 1837
+}

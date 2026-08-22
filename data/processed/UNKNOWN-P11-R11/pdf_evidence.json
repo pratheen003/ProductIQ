@@ -1,0 +1,63 @@
+{
+  "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+  "source_type": "pdf",
+  "product_id": "UNKNOWN-P11-R11",
+  "status": "success",
+  "evidence": [
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R11",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "frame_size",
+      "raw_value": "315S/M",
+      "value": 315.0,
+      "unit": null,
+      "evidence_text": "Frame: 315S/M | A B C D E: 340 379 162 176\n14.5\n365 404 202 220 | F G H I J:  | K L:  | M N O:  | P:  | Q:  | R:  | S:  | T:  | U: ",
+      "method": "table",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R11",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "A B C D E",
+      "raw_value": "340 379 162 176\n14.5\n365 404 202 220",
+      "value": 340.0,
+      "unit": null,
+      "evidence_text": "Frame: 315S/M | A B C D E: 340 379 162 176\n14.5\n365 404 202 220 | F G H I J:  | K L:  | M N O:  | P:  | Q:  | R:  | S:  | T:  | U: ",
+      "method": "table",
+      "confidence": 0.9
+    },
+    {
+      "source_id": "WEG_W22_Severe_Process_IE3_Brochure",
+      "source_type": "pdf",
+      "product_id": "UNKNOWN-P11-R11",
+      "page": 11,
+      "row": null,
+      "column": null,
+      "url": null,
+      "section": "icable to 2 pole motors. W",
+      "attribute": "frame_size",
+      "raw_value": "280S/M",
+      "value": 280.0,
+      "unit": null,
+      "evidence_text": "Frame: 280S/M | V X Y Z:  | AA BA CA DA EA:  | FA GA HA:  | IA JA KA:  | Max number of connectors:  | :  | : ",
+      "method": "table",
+      "confidence": 0.9
+    }
+  ],
+  "error": null,
+  "source_ref": "D:\\ProductIq\\data\\pdf\\WEG_W22_Severe_Process_IE3_Brochure.pdf",
+  "pages_read": 12,
+  "rows_read": null
+}

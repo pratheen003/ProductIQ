@@ -1,0 +1,21 @@
+{
+  "products_processed": 12,
+  "products_passing": 0,
+  "products_with_warn": 0,
+  "products_with_conflict": 12,
+  "products_failing": 0,
+  "total_findings": 409,
+  "findings_pass": 311,
+  "findings_warning": 2,
+  "findings_conflict": 61,
+  "findings_fail": 0,
+  "findings_not_checked": 35,
+  "findings_by_category": {
+    "SCHEMA": 109,
+    "REQUIRED_FIELD": 36,
+    "MISSING_DATA": 71,
+    "RANGE": 84,
+    "CONFLICT": 61,
+    "ENGINEERING": 48
+  }
+}

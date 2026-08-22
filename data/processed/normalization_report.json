@@ -1,0 +1,12 @@
+{
+  "products_processed": 12,
+  "products_succeeded": 12,
+  "products_failed": 0,
+  "evidence_consumed": 385,
+  "fields_normalized": 48,
+  "fields_conflicted": 49,
+  "fields_missing": 35,
+  "unmapped_attrs": 144,
+  "parse_errors": 0,
+  "unknown_units": 0
+}

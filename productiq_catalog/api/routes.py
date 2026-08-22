@@ -291,17 +291,29 @@ def export_delivery_format(format: str = Query("xlsx", pattern="^(xlsx|csv)$", d
     Download the full 1,000-row enriched dataset in the exact 252-column schema of Unihack Expected Output.
     """
     from fastapi.responses import FileResponse
-    from productiq_catalog.export.delivery_format_exporter import DeliveryFormatExporter
 
+    # Ensure robust absolute path resolution independent of CWD
+    app_root = Path(__file__).resolve().parent.parent.parent
+    processed_dir = app_root / "data" / "catalog" / "processed"
     filename = f"productiq_delivery_output.{format}"
-    file_path = _processed_dir / filename
+    file_path = processed_dir / filename
 
     if not file_path.exists():
-        exporter = DeliveryFormatExporter()
-        exporter.export_all(pipeline=_pipeline, input_loader=_input_loader)
+        try:
+            from productiq_catalog.export.delivery_format_exporter import DeliveryFormatExporter
+            exporter = DeliveryFormatExporter(output_dir=processed_dir)
+            exporter.export_all(pipeline=_pipeline, input_loader=_input_loader)
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to generate delivery export file ({filename}): {str(e)}",
+            )
 
     if not file_path.exists():
-        raise HTTPException(status_code=500, detail=f"Failed to generate {filename}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"Delivery export file not found at {file_path}",
+        )
 
     media_type = (
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -313,6 +325,10 @@ def export_delivery_format(format: str = Query("xlsx", pattern="^(xlsx|csv)$", d
         path=file_path,
         filename=filename,
         media_type=media_type,
-        headers={"Content-Disposition": f"attachment; filename={filename}"},
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Access-Control-Expose-Headers": "Content-Disposition",
+        },
     )
+
 
